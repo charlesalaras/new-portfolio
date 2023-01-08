@@ -4,7 +4,11 @@
 </script>
 
 <div class="navbar">
-    
+    <div>HOME</div>
+    <div>ABOUT</div>
+    <div>PROJECTS</div>
+    <div>CONTACT</div>
+    <div>BLOG</div>
 </div>
 
 <style>
