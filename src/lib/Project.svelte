@@ -1,15 +1,17 @@
 <script>
+	export let name;
+	export let color;
     export let deg = 0;
 </script>
 
-<div id="tridiv">
+<div id="tridiv" style="--color: {color}">
   <div class="scene" style="transform:rotateX(0deg) rotateY({deg}deg); ">
     <div class="shape cuboid-1 cub-1">
       <div class="face ft">front</div>
       <div class="face bk">back</div>
       <div class="face rt">right</div>
       <div class="face lt">left</div>
-      <div class="face bm">bottom</div>
+      <div class="face bm">{name}</div>
       <div class="face tp">top</div>
       <div class="cr cr-0">
         <div class="face side s0"></div>
@@ -38,11 +40,11 @@
 <style>
 #tridiv {
   perspective: 800px;
-  position: absolute;
   overflow: hidden;
   width: 500px;
   height: 1000px;
   font-size: 200%;
+  user-select: none;
 }
 .face {
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0);
@@ -141,9 +143,7 @@
   height:12em;
 }
 .cub-1 .face {
-  background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
-              linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
-              linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+  background: var(--color);
 }
 .cub-1 .ft {
   width:14.5em;

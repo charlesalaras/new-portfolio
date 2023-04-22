@@ -10,6 +10,19 @@
 		'/contact': ["green", "#11FF3E"],
 		'/projects': []
 	};
+	function pageTransition(node, { duration }) {
+		return {
+			duration,
+			css: t => {
+				const eased = elasticOut(t);
+
+				return `
+					top: ${-1+t}px;
+					border-radius: ${t}px ${t}px 0px 0px;
+				`
+			}
+		};
+	}
 </script>
 
 <Nav />
