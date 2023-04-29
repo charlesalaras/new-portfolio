@@ -1,6 +1,7 @@
 <script>
 	import { fade } from 'svelte/transition'
 	import Nav from '../../lib/Nav.svelte'
+	import Switch from '../../lib/Switch.svelte'
 	import Background from '../../lib/Background.svelte'
 	export let data
 
@@ -24,8 +25,10 @@
 		};
 	}
 </script>
-
-<Nav />
+<div class="header">
+	<Nav />
+	<Switch />
+</div>
 {#key data.pathname}
 <div class="app"
 	in:fade={{ duration: 300, delay: 400 }}

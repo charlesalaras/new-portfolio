@@ -4,7 +4,7 @@
 	
 </script>
 
-<div class="navbar">
+<div class="bar">
     <div on:click={() => { goto('/') }}>INTRO</div>
     <div on:click={() => { goto('/about') }}>ABOUT</div>
     <div on:click={() => { goto('/projects') }}>PROJECTS</div>
@@ -13,7 +13,7 @@
 </div>
 
 <style>
-    .navbar {
+    .bar {
 		background: rgba(0, 0, 0, 0.2);
 		border: 1px solid rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(15px);
