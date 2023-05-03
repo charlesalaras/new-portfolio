@@ -7,6 +7,16 @@ let project = [
 	{name: 'Project 3', color: 'linear-gradient(#33FF33, #77FF77)'},
 	{name: 'Project 4', color: 'linear-gradient(#EE00FF, #9000FF)'},
 	{name: 'Project 5', color: 'linear-gradient(#DDBB00, #CC5900)'},
+	{name: 'Project 1', color: 'linear-gradient(#1212FF, #5050FF)'},
+	{name: 'Project 2', color: 'linear-gradient(#FF5555, #FF1010)'},
+	{name: 'Project 3', color: 'linear-gradient(#33FF33, #77FF77)'},
+	{name: 'Project 4', color: 'linear-gradient(#EE00FF, #9000FF)'},
+	{name: 'Project 5', color: 'linear-gradient(#DDBB00, #CC5900)'},
+	{name: 'Project 1', color: 'linear-gradient(#1212FF, #5050FF)'},
+	{name: 'Project 2', color: 'linear-gradient(#FF5555, #FF1010)'},
+	{name: 'Project 3', color: 'linear-gradient(#33FF33, #77FF77)'},
+	{name: 'Project 4', color: 'linear-gradient(#EE00FF, #9000FF)'},
+	{name: 'Project 5', color: 'linear-gradient(#DDBB00, #CC5900)'},
 	{name: 'Project 6', color: 'linear-gradient(#505050, #DDDDFF)'}
 ];
 
@@ -23,23 +33,21 @@ function dragMe(node) {
 </script>
 <p>hello, {offset}</p>
 <div class="draggable" use:dragMe>
+	<div>TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</div>
 	{#each project as {name, color}, i}
-	<div>
+	<li>
 		<Project deg={offset} name={name} color={color}/>
-	</div>
+	</li>
 	{/each}
 </div>
 
 <style>
 .draggable {
 	width: 100%;
-	height: 100vh;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	scrollbar-width: none;
-	overflow: scroll;
-	background-color: green;
+	height: 80vh;
+	/*scrollbar-width: none;*/
+	overflow-x: scroll;
+	overflow-y: hidden;
+	list-style-type: none;
 }
 </style>

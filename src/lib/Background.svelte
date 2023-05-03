@@ -2,6 +2,7 @@
 
 export let color1;
 export let color2;
+export let darkMode;
 
 function getRandomRadiusModifier() {
 	let num = Math.floor(Math.random() * 10) + 1;
@@ -81,7 +82,7 @@ $: if(count <= 0) {
 </script>
 
 <svelte:window bind:innerWidth={vwWidth} bind:innerHeight={vwHeight}/>
-<div class="background">
+<div class="background" style="background: {darkMode ? "#121212" : "#EEEEFF"};">
 	<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="contain: strict; stroke-width: 1px; filter: blur(30px);">
 	<defs>
     	<radialGradient
@@ -109,11 +110,6 @@ $: if(count <= 0) {
 </div>
 
 <style>
-	@media (prefers-color-scheme: dark) {
-		.background {
-			background: #121212;
-		}
-	}
 	.background {
 		position: absolute;
 		overflow: hidden;

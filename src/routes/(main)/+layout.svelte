@@ -24,17 +24,22 @@
 			}
 		};
 	}
+	let darkMode = false;
 </script>
 <div class="header">
 	<Nav />
-	<Switch />
+	<Switch bind:theme={darkMode}/>
 </div>
 {#key data.pathname}
 <div class="app"
 	in:fade={{ duration: 300, delay: 400 }}
 	out:fade={{ duration: 300 }}
 >
-	<Background color1={colors[data.pathname][0]} color2={colors[data.pathname][1]}/>
+	<Background 
+		color1={colors[data.pathname][0]} 
+		color2={colors[data.pathname][1]}
+		darkMode={darkMode}
+	/>
     <main>
         <slot />
     </main>
