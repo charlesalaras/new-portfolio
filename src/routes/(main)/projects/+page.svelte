@@ -20,6 +20,8 @@ let project = [
 	{name: 'Project 6', color: 'linear-gradient(#505050, #DDDDFF)'}
 ];
 
+let node;
+let innerWidth = 0;
 let offset = 0;
 let moving = false;
 
@@ -28,26 +30,46 @@ function dragMe(node) {
 		evt.preventDefault();
 		node.scrollLeft += evt.deltaY;
 	});
+	node.addEventListener('scroll', (evt) => { offset = node.scrollLeft });
 }
 
 </script>
-<p>hello, {offset}</p>
-<div class="draggable" use:dragMe>
-	<div>TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</div>
+<svelte:window bind:innerWidth/>
+
+<p>hello, {offset}, {innerWidth}</p>
+<div class="draggable" use:dragMe bind:this={node}>
 	{#each project as {name, color}, i}
-	<li>
-		<Project deg={offset} name={name} color={color}/>
+	{#if i == 0}
+	<li style="margin-left: 37.5vw;">
+		<Project width={innerWidth} scrollPos={offset} name={name} color={color} index={i}/>
 	</li>
+	{:else}
+		{#if i == project.length - 1}
+		<li style="margin-right: 37.5vw;">
+			<Project width={innerWidth} scrollPos={offset} name={name} color={color} index={i}/>
+		</li>
+		{:else}
+		<li>
+			<Project width={innerWidth} scrollPos={offset} name={name} color={color} index={i}/>
+		</li>
+		{/if}
+	{/if}
 	{/each}
 </div>
 
 <style>
 .draggable {
-	width: 100%;
+	position: absolute;
+	left: 0px;
+	width: 100vw;
 	height: 80vh;
-	/*scrollbar-width: none;*/
+	white-space: nowrap;
+	scrollbar-width: none;
 	overflow-x: scroll;
 	overflow-y: hidden;
 	list-style-type: none;
+}
+li {
+	display: inline-block;
 }
 </style>

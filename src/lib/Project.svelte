@@ -1,10 +1,21 @@
 <script>
+	export let width;
 	export let name;
 	export let color;
-    export let deg = 0;
+	export let index;
+    export let scrollPos;
+
+	let deg;
+	
+	$: if(scrollPos == index * 0.25 * width) deg = 0;
+	else if(scrollPos < index * 0.25 * width) {
+		deg = -45;
+	} else if(scrollPos > index * 0.25 * width) {
+		deg = 45;
+	}
 </script>
 
-<div id="tridiv" style="--color: {color}">
+<div id="tridiv" style="--color: {color}; --size: {(width / 2000) * 200}%">
   <div class="scene" style="transform:rotateX(0deg) rotateY({deg}deg); ">
     <div class="shape cuboid-1 cub-1">
       <div class="face ft">front</div>
@@ -41,9 +52,9 @@
 #tridiv {
   perspective: 800px;
   overflow: hidden;
-  width: 500px;
-  height: 1000px;
-  font-size: 200%;
+  width: 25vw;
+  height: 80vh;
+  font-size: var(--size);
   user-select: none;
 }
 .face {
