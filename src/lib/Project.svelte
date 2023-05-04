@@ -6,12 +6,35 @@
     export let scrollPos;
 
 	let deg;
-	
-	$: if(scrollPos == index * 0.25 * width) deg = 0;
+
+	function smoothstep (min, max, value) {
+		var x = Math.max(0, Math.min(1, (value-min)/(max-min)));
+  		return x*x*(3 - 2*x);
+	};
+
+	$: {
+	let origin = scrollPos - (index * 0.25 * width); // offset towards zero
+	let itemWidth = 0.25 * width;
+	/*
+	if(scrollPos >= (index * 0.25 * width) - (0.125 * width) && scrollPos <= (index * 0.25 * width) + (0.125 * width)) deg = 0;
 	else if(scrollPos < index * 0.25 * width) {
 		deg = -45;
 	} else if(scrollPos > index * 0.25 * width) {
 		deg = 45;
+	}
+	*/
+	if(origin < -itemWidth / 4) { // Curve from 0 to -45 then -90
+		if(origin < -itemWidth) deg = -(smoothstep(itemWidth, 2 * itemWidth, Math.abs(origin)) * 45) - 45;
+		else deg = -smoothstep(itemWidth / 4, itemWidth, Math.abs(origin)) * 45;
+	}
+	else if(origin > itemWidth / 4) { // Curve from 0 to 45 then 90
+		if(origin > itemWidth) deg = (smoothstep(itemWidth, 2 * itemWidth, origin) * 45) + 45;
+		else deg = (smoothstep(itemWidth / 4, itemWidth, origin)) * 45;
+		//deg = 45;
+	}
+	else { // Its in the zero range
+		deg = 0;
+	}
 	}
 </script>
 
@@ -22,7 +45,7 @@
       <div class="face bk">back</div>
       <div class="face rt">right</div>
       <div class="face lt">left</div>
-      <div class="face bm">{name}</div>
+      <div class="face bm">{scrollPos - (index * 0.25 * width)}</div>
       <div class="face tp">top</div>
       <div class="cr cr-0">
         <div class="face side s0"></div>
@@ -58,7 +81,7 @@
   user-select: none;
 }
 .face {
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 1);
 }
 .scene, .shape, .face, .face-wrapper, .cr {
   position: absolute;
