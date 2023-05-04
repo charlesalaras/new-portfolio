@@ -1,8 +1,10 @@
 <script>
 	import { fade } from 'svelte/transition'
-	import Nav from '../../lib/Nav.svelte'
-	import Switch from '../../lib/Switch.svelte'
-	import Background from '../../lib/Background.svelte'
+	import Nav from '$lib/Nav.svelte'
+	import Switch from '$lib/Switch.svelte'
+	import Background from '$lib/Background.svelte'
+	import '../styles.css'
+	
 	export let data
 
 	let colors = {

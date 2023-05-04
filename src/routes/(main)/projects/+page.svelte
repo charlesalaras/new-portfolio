@@ -1,5 +1,5 @@
 <script>
-import Project from '../../../lib/Project.svelte'
+import Project from '$lib/Project.svelte'
 
 let project = [
 	{name: 'Project 1', color: 'linear-gradient(#1212FF, #5050FF)'},
@@ -20,7 +20,6 @@ let project = [
 	{name: 'Project 6', color: 'linear-gradient(#505050, #DDDDFF)'}
 ];
 
-let node;
 let innerWidth = 0;
 let offset = 0;
 let moving = false;
@@ -33,11 +32,21 @@ function dragMe(node) {
 	node.addEventListener('scroll', (evt) => { offset = node.scrollLeft });
 }
 
+function scrollOverflow(node) {
+
+}
+
 </script>
 <svelte:window bind:innerWidth/>
 
-<p>hello, {offset}, {innerWidth}</p>
-<div class="draggable" use:dragMe bind:this={node}>
+<div class="search">
+	<div class="search-icon"></div>
+	<input class="search-bar" placeholder="Search"/>
+</div>
+<div class="chips" use:scrollOverflow>
+
+</div>
+<div class="draggable" use:dragMe>
 	{#each project as {name, color}, i}
 	{#if i == 0}
 	<li style="margin-left: 37.5vw;">
@@ -58,6 +67,20 @@ function dragMe(node) {
 </div>
 
 <style>
+.search {
+	display: flex;
+	align-items: center;
+	background-color: #FFFFFF;
+	width: 10vw;
+	height: 56px;
+	border-radius: 56px;
+}
+.search-bar {
+	background-color: rgba(0, 0, 0, 0);
+	border: none;
+	width: 100%;
+	height: 100%;
+}
 .draggable {
 	position: absolute;
 	left: 0px;

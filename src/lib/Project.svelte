@@ -41,11 +41,17 @@
 <div id="tridiv" style="--color: {color}; --size: {(width / 2000) * 200}%">
   <div class="scene" style="transform:rotateX(0deg) rotateY({deg}deg); ">
     <div class="shape cuboid-1 cub-1">
-      <div class="face ft">front</div>
-      <div class="face bk">back</div>
+      <div class="face ft">
+		<div class="title">{name}</div>
+	  </div>
+      <div class="face bk">
+		<div class="title">{name}</div>
+	  </div>
       <div class="face rt">right</div>
       <div class="face lt">left</div>
-      <div class="face bm">{scrollPos - (index * 0.25 * width)}</div>
+      <div class="face bm">
+	  <div class="front-title">{name}</div>
+	  </div>
       <div class="face tp">top</div>
       <div class="cr cr-0">
         <div class="face side s0"></div>
@@ -72,6 +78,25 @@
 </div>
 
 <style>
+.front-title {
+	writing-mode: vertical-lr;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	transform: rotate(180deg);
+	font-weight: 900;
+}
+.title {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 900;
+}
 #tridiv {
   perspective: 800px;
   overflow: hidden;
@@ -81,7 +106,7 @@
   user-select: none;
 }
 .face {
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 1);
+  box-shadow: 0 0 0 2px rgba(12, 12, 12, 1);
 }
 .scene, .shape, .face, .face-wrapper, .cr {
   position: absolute;
@@ -105,7 +130,6 @@
   overflow: hidden;
   transform-origin: 0 0;
   backface-visibility: hidden;
-  /* hidden by default, prevent blinking and other weird rendering glitchs */
 }
 .face {
   background-size: 100% 100%!important;
