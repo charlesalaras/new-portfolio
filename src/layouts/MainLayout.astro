@@ -1,10 +1,16 @@
 ---
 import Nav from '@lib/Nav.svelte'
 import Toggle from '@lib/Toggle.svelte'
+import Background from '@lib/Background.svelte'
 ---
 
-<div>
+<div class="header">
 	<Nav/>
 	<Toggle/>
 </div>
-<slot/>
+<div class="app">
+	<Background/>
+	<main>
+		<slot/>
+	</main>
+</div>

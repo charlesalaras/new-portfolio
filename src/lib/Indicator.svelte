@@ -7,24 +7,22 @@
 		},
 		"/about": {
 			"title": "ABOUT",
-			"icon": ""
+			"icon": "person-fill.svg"
 		},
 		"/projects": {
 			"title": "PROJECTS",
-			"icon": ""
+			"icon": "wrench-adjustable.svg"
 		},
 		"/contact": {
 			"title": "CONTACT",
-			"icon": ""
+			"icon": "envelope-at-fill.svg"
 		}
 	};
 </script>
 
 <div class="indicator">
-	<svg class="icon" fill="white" viewBox="0 0 16 16">
-
-	</svg>
-	{page}
+	<div class="icon" style="background: url({frontmatter["page"]["icon"]})"/>
+	{frontmatter["page"]["title"]}
 </div>
 
 <style>
@@ -32,6 +30,7 @@
 		background: rgba(0, 0, 0, 0.2);
 		border: 1px solid rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(15px);
+		font-weight: 900;
 	}
 	.icon {
 		width: 1em;
