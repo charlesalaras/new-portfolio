@@ -5,12 +5,13 @@
     
     let canvasElement;
     const COLORS = [
-		'#0020FF', // blue
+		'#1244FF', // blue
 		'#00CCFF', // cyan
 		'#121212', // black
 	];
 
     function draw(ctx) {
+		// Draw frame here
         ctx.fillStyle = "rgb(200, 0, 0)";
         ctx.fillRect(10, 10, 50, 50);
 
@@ -23,15 +24,24 @@
         canvasElement.width = width;
     	canvasElement.height = height;
 		const ctx = canvasElement.getContext("2d");
-        draw(ctx);
+        
+		function animate() {
+			requestAnimationFrame(animate);
+			draw(ctx);
+		}
+
+		animate();
 	})
 
     $: {
         if(canvasElement) {
 			canvasElement.width = width;
 			canvasElement.height = height;
-			const ctx = canvasElement.getContext("2d");
-			draw(ctx);
+			
+			requestAnimationFrame(() => {
+				const ctx = canvasElement.getContext("2d");
+				draw(ctx);
+			});
         }
     }
 </script>
@@ -48,6 +58,5 @@ canvas {
     left: 0px;
     width: 100vw;
     height: 100vh;
-	z-index: 2;
 }
 </style>
