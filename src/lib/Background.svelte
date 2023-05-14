@@ -1,62 +1,24 @@
 <script>
-	import { onMount } from 'svelte';
+	export let color1;
+	export let color2;
     let width;
     let height;
-    
-    let canvasElement;
-    const COLORS = [
-		'#1244FF', // blue
-		'#00CCFF', // cyan
-		'#121212', // black
-	];
-
-    function draw(ctx) {
-		// Draw frame here
-        ctx.fillStyle = "rgb(200, 0, 0)";
-        ctx.fillRect(10, 10, 50, 50);
-
-        ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
-        ctx.fillRect(30, 30, 50, 50);
-
-    }
-    
-	onMount(() => {
-        canvasElement.width = width;
-    	canvasElement.height = height;
-		const ctx = canvasElement.getContext("2d");
-        
-		function animate() {
-			requestAnimationFrame(animate);
-			draw(ctx);
-		}
-
-		animate();
-	})
-
-    $: {
-        if(canvasElement) {
-			canvasElement.width = width;
-			canvasElement.height = height;
-			
-			requestAnimationFrame(() => {
-				const ctx = canvasElement.getContext("2d");
-				draw(ctx);
-			});
-        }
-    }
+	// Inner BG acts as the background gradient
+	// Outer BG acts as an SVG mask of repeated bezier curves and gradient masks
 </script>
 
 <svelte:window bind:innerWidth={width} bind:innerHeight={height}/>
-<canvas bind:this={canvasElement}>
+<div class="inner-bg" style="--color1: {color1}; --color2: {color2};">
+	<div class="bg">
 
-</canvas>
+	</div>
+</div>
 
 <style>
-canvas {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
+.inner-bg {
+
+}
+.bg {
+
 }
 </style>
