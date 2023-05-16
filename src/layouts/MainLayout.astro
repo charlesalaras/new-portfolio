@@ -2,6 +2,14 @@
 import Nav from '@lib/Nav.svelte'
 import Toggle from '@lib/Toggle.svelte'
 import Background from '@lib/Background.svelte'
+
+const colors = {
+	"/": ["#1CA7EC", "#4ADEDE"],
+	"/about": ["#FF0000", "#FD007A"],
+	"/projects": ["#FFEE00", "#FFAA00"],
+	"/contact": ["#008800", "#11FF3E"]
+}
+const { pathname } = Astro.props
 ---
 
 <div class="header">
@@ -9,7 +17,7 @@ import Background from '@lib/Background.svelte'
 	<Toggle/>
 </div>
 <div class="app">
-	<Background/>
+	<Background color1={colors[pathname][0]} color2={colors[pathname][1]} theme={true}/>
 	<main>
 		<slot/>
 	</main>
