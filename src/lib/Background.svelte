@@ -1,7 +1,6 @@
 <script>
 	export let color1;
 	export let color2;
-	export let theme;
     let width;
     let height;
 	// Outer BG acts as the background gradient
@@ -9,7 +8,7 @@
 </script>
 
 <div class="bg" style="--color1: {color1}; --color2: {color2};">
-	<div class="inner-bg" style="background: url({theme ? "bg.svg" : "bg-light.svg"}) center / 100% 100% no-repeat"></div>
+	<div class="inner-bg"></div>
 </div>
 
 <style>
@@ -29,9 +28,15 @@
 	animation: Gradient 60s ease infinite;
 	z-index: -2;
 }
-.inner-bg {
+html.dark .inner-bg {
 	width: 100%;
 	background: url("bg.svg") center / 100% 100% no-repeat;
+	height: 100%;
+	z-index: -1;
+}
+.inner-bg {
+	width: 100%;
+	background: url("bg-light.svg") center / 100% 100% no-repeat;
 	height: 100%;
 	z-index: -1;
 }

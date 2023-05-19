@@ -1,6 +1,6 @@
 ---
 import Nav from '@lib/Nav.svelte'
-import Toggle from '@lib/Toggle.svelte'
+import Toggle from '@lib/Toggle.astro'
 import Background from '@lib/Background.svelte'
 
 const colors = {
@@ -11,13 +11,12 @@ const colors = {
 }
 const { pathname } = Astro.props
 ---
-
 <div class="header">
 	<Nav/>
 	<Toggle/>
 </div>
 <div class="app">
-	<Background color1={colors[pathname][0]} color2={colors[pathname][1]} theme={true}/>
+	<Background color1={colors[pathname][0]} color2={colors[pathname][1]}/>
 	<main>
 		<slot/>
 	</main>
