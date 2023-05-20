@@ -13,6 +13,7 @@
 		document.documentElement.classList.remove('dark');
 	} else {
 		document.documentElement.classList.add('dark');
+		document.getElementById('bg-mask').classList.add('bgdark');
 	}
 
 	window.localStorage.setItem('theme', theme);

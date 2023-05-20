@@ -5,10 +5,11 @@
     let height;
 	// Outer BG acts as the background gradient
 	// Inner BG acts as an SVG mask of repeated bezier curves and gradient masks
+	// If dark: filter: brightness(7%);
 </script>
 
 <div class="bg" style="--color1: {color1}; --color2: {color2};">
-	<div class="inner-bg"></div>
+	<div class="inner-bg" id="bg-mask"></div>
 </div>
 
 <style>
@@ -28,15 +29,9 @@
 	animation: Gradient 60s ease infinite;
 	z-index: -2;
 }
-html.dark .inner-bg {
-	width: 100%;
-	background: url("bg.svg") center / 100% 100% no-repeat;
-	height: 100%;
-	z-index: -1;
-}
 .inner-bg {
 	width: 100%;
-	background: url("bg-light.svg") center / 100% 100% no-repeat;
+	background: url("bg.svg") center / 100% 100% no-repeat;
 	height: 100%;
 	z-index: -1;
 }
