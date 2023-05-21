@@ -1,18 +1,17 @@
-<script>
-	export let color1;
-	export let color2;
-    let width;
-    let height;
+---
+	const { color1, color2 } = Astro.props;
 	// Outer BG acts as the background gradient
 	// Inner BG acts as an SVG mask of repeated bezier curves and gradient masks
 	// If dark: filter: brightness(7%);
-</script>
+	let theme = localStorage.getItem('theme');
+	console.log(theme);
+---
 
 <div class="bg" style="--color1: {color1}; --color2: {color2};">
-	<div class="inner-bg" id="bg-mask"></div>
+	<div class:list={['inner-bg', { dark: theme }]} id="bg-mask"></div>
 </div>
 
-<style>
+<style define:vars={{ color1, color2 }}>
 @keyframes Gradient {
 	0% {background-position: 0% 33%}
 	50% {background-position: 100% 66%}
@@ -34,5 +33,8 @@
 	background: url("bg.svg") center / 100% 100% no-repeat;
 	height: 100%;
 	z-index: -1;
+}
+.dark {
+	filter: brightness(7%);
 }
 </style>
