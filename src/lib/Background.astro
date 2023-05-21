@@ -3,12 +3,10 @@
 	// Outer BG acts as the background gradient
 	// Inner BG acts as an SVG mask of repeated bezier curves and gradient masks
 	// If dark: filter: brightness(7%);
-	let theme = localStorage.getItem('theme');
-	console.log(theme);
 ---
 
 <div class="bg" style="--color1: {color1}; --color2: {color2};">
-	<div class:list={['inner-bg', { dark: theme }]} id="bg-mask"></div>
+	<div class="inner-bg" id="bg-mask"></div>
 </div>
 
 <style define:vars={{ color1, color2 }}>
@@ -33,8 +31,5 @@
 	background: url("bg.svg") center / 100% 100% no-repeat;
 	height: 100%;
 	z-index: -1;
-}
-.dark {
-	filter: brightness(7%);
 }
 </style>
