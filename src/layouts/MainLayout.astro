@@ -1,4 +1,5 @@
 ---
+import Indicator from '@lib/Indicator.astro'
 import Nav from '@lib/Nav.svelte'
 import Toggle from '@lib/Toggle.astro'
 import Background from '@lib/Background.astro'
@@ -30,7 +31,8 @@ const { pathname } = Astro.props
   }
   window.localStorage.setItem("theme", theme);
 </script>
-<div class="header">
+	<div class="header">
+		<Indicator pathname={pathname}/>
 	<Nav/>
 	<Toggle/>
 </div>
@@ -40,3 +42,8 @@ const { pathname } = Astro.props
 		<slot/>
 	</main>
 </div>
+
+<style>
+.header div {
+}
+</style>

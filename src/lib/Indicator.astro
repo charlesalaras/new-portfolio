@@ -1,0 +1,42 @@
+---
+const { pathname } = Astro.props;
+
+const content = {
+"/": {
+	"title": "HOME",
+	"icon": "house-fill.svg"
+},
+"/about": {
+	"title": "ABOUT",
+	"icon": "person-fill.svg"
+},
+"/projects": {
+	"title": "PROJECTS",
+	"icon": "wrench-adjustable.svg"
+},
+"/contact": {
+	"title": "CONTACT",
+	"icon": "envelope-at-fill.svg"
+},
+};
+
+---
+<div class="indicator hc">
+	<div 
+		class="icon" 
+		style=`mask: url(${content[pathname]["icon"]}) no-repeat 50% 50%`></div>
+	{content[pathname]["title"]}
+</div>
+
+<style>
+.indicator {
+	display: flex;
+	flex-direction: row;
+}
+.icon {
+	width: 1rem;
+	height: 1rem;
+	margin-right: 0.25rem;
+}
+</style>
+
