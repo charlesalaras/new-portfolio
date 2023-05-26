@@ -16,7 +16,18 @@ html .icon {
 	background-color: #2d2d2d;
 }
 .hc {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+    backdrop-filter: blur(15px);
+	padding: 1rem;
+}
+html .hc {
 	background: rgba(0, 0, 0, 0.2);
 	border: 1px solid rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(15px);
+}
+html.dark .hc {
+	background: rgba(255, 255, 255, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.3);
 }

@@ -1,3 +1,6 @@
+<script>
+export let pathname;
+</script>
 
 <div class="bar hc">
     <a href='/'>INTRO</a>
@@ -8,10 +11,8 @@
 </div>
 
 <style>
-    .bar {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: space-evenly;
-    }
+	.bar {
+		border-radius: calc(2rem / 3);
+		gap: 2rem;
+	}
 </style>

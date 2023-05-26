@@ -15,7 +15,7 @@
 
 <label class="switch">
 	<input type="checkbox" id="themeToggle"/>
-	<span class="slider" />
+	<span class="slider hc" />
 </label>
 
 <style>
@@ -37,9 +37,6 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: rgba(0, 0, 0, 0.2);
-	border: 1px solid rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(15px);
 	transition: 0.4s ease;
 	border-radius: 32px;
 }
@@ -57,9 +54,6 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 16px 16px;
-}
-input:checked + .slider {
-	background: rgba(0, 0, 255, 0.2);
 }
 input:checked + .slider:before {
 	background-image: url("moon-stars-fill.svg");
