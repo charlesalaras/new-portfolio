@@ -15,13 +15,18 @@
 	50% {background-position: 100% 66%}
 	100% {background-position: 0% 33%}
 }
+html .bg {
+	background-image: repeating-linear-gradient(45deg, var(--primary-light) 0%, green 10%, var(--primary-light) 20%);
+}
+html.dark .bg {
+	background-image: repeating-linear-gradient(45deg, var(--primary-dark) 0%, purple 10%, var(--primary-dark) 20%);
+}
 .bg {
 	width: 100vw;
 	height: 100vh;
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	background: repeating-linear-gradient(45deg, var(--color1) 0%, var(--color2) 10%, var(--color1) 20%);
 	background-size: 400% 400%;
 	animation: Gradient 60s ease infinite;
 	z-index: -2;

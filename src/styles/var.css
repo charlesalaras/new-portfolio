@@ -1,0 +1,12 @@
+:root {
+	--primary-light: #0061fd;
+	--primary-dark: #0089ff;
+	--secondary: #42baff;
+	--accent-1: #e4523f;
+	--accent-2: #ffce80;
+	--accent-3: #84e548;
+	--bg-light: #fff;
+	--bg-dark: #121212;
+	--fg-light: #2d2d2d;
+	--fg-dark: #ededed;
+}

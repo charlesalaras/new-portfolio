@@ -1,20 +1,22 @@
 @import "modern-normalize.css";
-
+@import "var.css";
+/* Root */
 html.dark {
-	color: #ddd;
+	color: var(--fg-dark);
 }
 html {
-	color: #2d2d2d;
+	color: var(--fg-light);
 }
 html.dark .inner-bg {
 	filter: brightness(7%);
 }
 html.dark .icon {
-	background-color: #ddd;
+	background-color: var(--fg-dark);
 }
 html .icon {
-	background-color: #2d2d2d;
+	background-color: var(--fg-light);
 }
+/* Header Components */
 .hc {
 	display: flex;
 	flex-direction: row;
@@ -24,8 +26,12 @@ html .icon {
 	padding: 1rem;
 }
 html .hc {
-	background: rgba(125, 125, 125, 0.1);
-	border: 1px solid rgba(125, 125, 125, 0.3);
+	background: rgba(219, 219, 219, 0.5);
+	border: 1px solid rgba(219, 219, 219, 1);
+}
+html.dark .hc {
+	background: rgba(36, 36, 36, 0.5);
+	border: 1px solid rgba(36, 36, 36, 1);
 }
 a {
 	color: inherit;
@@ -38,4 +44,33 @@ a {
 .header .bar {
 	transition: 0.3s;
 	transform: scale(0.75);
+}
+/* Nav Bar */
+html .bar:after {
+	background: linear-gradient(90deg,
+		transparent,
+		var(--primary-light),
+		transparent
+	);
+}
+html.dark .bar:after {
+	background: linear-gradient(90deg,
+		transparent,
+		var(--primary-dark),
+		transparent
+	);
+}
+html .bar:before {
+	background: linear-gradient(90deg,
+		transparent,
+		var(--primary-light),
+		transparent
+	);
+}
+html.dark .bar:before {
+	background: linear-gradient(90deg,
+		transparent,
+		var(--primary-dark),
+		transparent
+	);
 }

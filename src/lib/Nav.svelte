@@ -25,11 +25,6 @@ export let pathname;
 		transition: left, opacity;
 		transition-duration: 600ms;
 		transition-timing-function: ease;
-		background: linear-gradient(90deg,
-			transparent,
-			blue,
-			transparent
-		);
 		opacity: 0;
 	}
 	.bar:after {
@@ -49,11 +44,6 @@ export let pathname;
 		transition: left, opacity;
 		transition-duration: 600ms;
 		transition-timing-function: ease;
-		background: linear-gradient(90deg,
-			transparent,
-			blue,
-			transparent
-		);
 		opacity: 0;
 	}
 	.bar:before {
