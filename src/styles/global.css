@@ -19,7 +19,7 @@ html .icon {
 /* Header Components */
 .hc {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
     backdrop-filter: blur(4px);
@@ -46,6 +46,12 @@ a {
 	transform: scale(0.75);
 }
 /* Nav Bar */
+html .underbar {
+	background: var(--fg-light);
+}
+html.dark .underbar {
+	background: var(--fg-dark);
+}
 html .bar:after {
 	background: linear-gradient(90deg,
 		transparent,
