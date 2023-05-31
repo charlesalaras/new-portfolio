@@ -4,54 +4,71 @@ export let pathname;
 
 <div class="bar hc">
 <ul>
-    <li>
+    <li class="one">
 		<a href='/'>INTRO</a>
 	</li>
-    <li>
+    <li class="two">
 		<a href='/about'>ABOUT</a>
 	</li>
-    <li>
+    <li class="three">
 		<a href='/projects'>PROJECTS</a>
 	</li>
-    <li>
+    <li class="four">
 		<a href='/contact'>CONTACT</a>
 	</li>
-    <li>
-		<a href='/blog'>BLOG<div class="icon bi-box-arrow-up-right"></div></a>
+    <li class="five">
+		<a href='/blog'>BLOG<span class="icon bi-box-arrow-up-right"></span></a>
 	</li>
+	<hr/>
 </ul>
-<div class="underbar"></div>
 </div>
 
 <style>
 	ul {
-		list-style: none;
 		padding: 0;
 	}
+	ul li {
+		display: inline;
+		text-align: center;
+	}
+	a {
+		display: inline-block;
+		width: 20%;
+		margin: 0;
+	}
+	hr {
+		height: .25rem;
+		width: 20%;
+		margin: 0;
+		background: linear-gradient(
+			to right,
+			transparent,
+			transparent 25%,
+			red 25%,
+			red 75%,
+			transparent 75%,
+			transparent
+		);
+		border: none;
+		transition: .3s ease-in-out;
+	}
+	/* Text Decorations */
 	.bi-box-arrow-up-right {
+		display: inline-block;
+		margin-left: 0.5rem;
 		mask: url("box-arrow-up-right.svg") no-repeat 50% 50%;
 	}
 	.icon {
-		width: 1rem;
-		height: 1rem;
-	}
-	.underbar {
-		transition: width;
-		transition-duration: 500ms;
-		transition-timing-function: ease;
-	}
-	.bar .underbar {
-		width: 50%;
-		height: 0.1rem;
-	}
-	.bar:hover .underbar {
-		width: 100%;
+		width: 16px;
+		height: 16px;
 	}
 	.bar {
+		width: auto;
 		border-radius: calc(2rem / 3);
 		gap: 2rem;
 		box-sizing: border-box;
 	}
+	/* Bar Decorations */
 	.bar:after {
 		content: "";
 		height: 1px;
