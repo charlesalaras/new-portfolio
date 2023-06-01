@@ -42,11 +42,27 @@ a {
 	transform: scale(0.75);
 }
 /* Nav Bar */
-html .underbar {
-	background: var(--fg-light);
+html hr {
+	background: linear-gradient(
+		to right,
+		transparent,
+		transparent 25%,
+		var(--fg-light) 25%,
+		var(--fg-light) 75%,
+		transparent 75%,
+		transparent
+	);
 }
-html.dark .underbar {
-	background: var(--fg-dark);
+html.dark hr {
+	background: linear-gradient(
+		to right,
+		transparent,
+		transparent 25%,
+		var(--fg-dark) 25%,
+		var(--fg-dark) 75%,
+		transparent 75%,
+		transparent
+	);
 }
 html .bar:after {
 	background: linear-gradient(90deg,

@@ -1,29 +1,30 @@
 <script>
 export let pathname;
+
+const percents = {
+	"/": "0%",
+	"/about": "20%",
+	"/projects": "40%",
+	"/contact": "60%",
+	"/blog": "80%"
+}
+
+const margin = percents[pathname] 
 </script>
 
 <div class="bar hc">
 <ul>
-    <li class="one">
-		<a href='/'>INTRO</a>
-	</li>
-    <li class="two">
-		<a href='/about'>ABOUT</a>
-	</li>
-    <li class="three">
-		<a href='/projects'>PROJECTS</a>
-	</li>
-    <li class="four">
-		<a href='/contact'>CONTACT</a>
-	</li>
-    <li class="five">
-		<a href='/blog'>BLOG<span class="icon bi-box-arrow-up-right"></span></a>
-	</li>
-	<hr/>
+    <li class="one"><a href='/'>INTRO</a></li><!--
+ --><li class="two"><a href='/about'>ABOUT</a></li><!--
+ --><li class="three"><a href='/projects'>PROJECTS</a></li><!--
+ --><li class="four"><a href='/contact'>CONTACT</a></li><!--
+ --><li class="five"><a href='/blog'>BLOG<span class="icon bi-box-arrow-up-right"></span></a></li>
+	<hr style="margin-left: {margin}"/>
 </ul>
 </div>
 
 <style>
+	/* List Stylings */
 	ul {
 		padding: 0;
 	}
@@ -34,24 +35,29 @@ export let pathname;
 	a {
 		display: inline-block;
 		width: 20%;
+		padding: 0.25rem 0;
 		margin: 0;
 	}
 	hr {
-		height: .25rem;
+		height: .1rem;
 		width: 20%;
 		margin: 0;
-		background: linear-gradient(
-			to right,
-			transparent,
-			transparent 25%,
-			red 25%,
-			red 75%,
-			transparent 75%,
-			transparent
-		);
 		border: none;
 		transition: .3s ease-in-out;
 	}
+	/* Link Animations */
+	.bar hr {
+		transform: scaleX(0.25);
+	}
+	.bar:hover hr {
+		transform: scaleX(1);
+	}
+	.one:hover ~ hr { margin-left: 0% !important; }
+	.two:hover ~ hr { margin-left: 20% !important; }
+	.three:hover ~ hr { margin-left: 40% !important; }
+	.four:hover ~ hr { margin-left: 60% !important; }
+	.five:hover ~ hr { margin-left: 80% !important; }
+
 	/* Text Decorations */
 	.bi-box-arrow-up-right {
 		display: inline-block;
@@ -62,11 +68,12 @@ export let pathname;
 		width: 16px;
 		height: 16px;
 	}
+	/* Bar Markup */
 	.bar {
-		width: auto;
+		width: 50%;
 		border-radius: calc(2rem / 3);
-		gap: 2rem;
 		box-sizing: border-box;
+		padding: 0 1rem;
 	}
 	/* Bar Decorations */
 	.bar:after {
