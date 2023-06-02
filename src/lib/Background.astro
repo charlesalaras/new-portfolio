@@ -1,25 +1,32 @@
 ---
-	const { color1, color2 } = Astro.props;
+	const { pathname } = Astro.props;
 	// Outer BG acts as the background gradient
 	// Inner BG acts as an SVG mask of repeated bezier curves and gradient masks
 	// If dark: filter: brightness(7%);
+	const colors = {
+	"/": "var(--secondary)",
+	"/about": "var(--accent-1)",
+	"/projects": "var(--accent-2)",
+	"/contact": "var(--accent-3)",
+	}
+	const secondaryColor = colors[pathname];
 ---
 
-<div class="bg" style="--color1: {color1}; --color2: {color2};">
+<div class="bg">
 	<div class="inner-bg" id="bg-mask"></div>
 </div>
 
-<style define:vars={{ color1, color2 }}>
+<style define:vars={{ secondaryColor }}>
 @keyframes Gradient {
 	0% {background-position: 0% 33%}
 	50% {background-position: 100% 66%}
 	100% {background-position: 0% 33%}
 }
 html .bg {
-	background-image: repeating-linear-gradient(45deg, var(--primary-light) 0%, green 10%, var(--primary-light) 20%);
+	background-image: repeating-linear-gradient(45deg, var(--primary-light) 0%, var(--secondaryColor) 10%, var(--primary-light) 20%);
 }
 html.dark .bg {
-	background-image: repeating-linear-gradient(45deg, var(--primary-dark) 0%, purple 10%, var(--primary-dark) 20%);
+	background-image: repeating-linear-gradient(45deg, var(--primary-dark) 0%, var(--secondaryColor) 10%, var(--primary-dark) 20%);
 }
 .bg {
 	width: 100vw;
