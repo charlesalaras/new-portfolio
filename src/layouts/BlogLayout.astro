@@ -1,3 +1,6 @@
+---
+import '../styles/global.css'
+---
 <script is:inline>
   const theme = (() => {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
@@ -17,5 +20,67 @@
   window.localStorage.setItem("theme", theme);
 </script>
 
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="generator" content={Astro.generator} />
+	<title>Astro</title>
+</head>
+<body>
+	<div class="content">
+		<h1>Charles Alaras' Blog</h1>
+		<main>
+			<slot/>
+		</main>
+	</div>
+</body>
+</html>
 
-<slot/>
+<style>
+	@media (min-aspect-ratio: 6/5) {
+		.content {
+			width: calc(200vw / 3);
+		}
+	}
+	@media(max-aspect-ratio: 6/5) {
+		.content {
+			width: 95vw;
+		}
+	}
+	.content {
+		height: 100vh;
+		padding: 0.5rem;
+	}
+	body {
+		margin: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	html.dark body {
+		background-color: var(--bg-dark);
+	}
+	html body {
+		background-color: var(--bg-light);
+	}
+	h1 {
+		margin: 0;
+		font-weight: 900;
+		font-size: 4rem;
+		height: 8rem;
+	}
+	html.dark h1 {
+		background: linear-gradient(
+			var(--bg-dark) 75%,
+			transparent
+		);
+	}
+	html h1 {
+		background: linear-gradient(
+			var(--bg-light) 75%,
+			transparent
+		);
+	}
+</style>

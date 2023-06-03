@@ -31,17 +31,28 @@ const { pathname } = Astro.props
   }
   window.localStorage.setItem("theme", theme);
 </script>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="generator" content={Astro.generator} />
+	<title>Astro</title>
+</head>
+<body>
 	<div class="header">
 		<Indicator pathname={pathname}/>
 		<Nav pathname={pathname}/>
 		<Toggle/>
 	</div>
-<div class="app">
-	<Background pathname={pathname}/>
-	<main>
-		<slot/>
-	</main>
-</div>
+	<div class="app">
+		<Background pathname={pathname}/>
+		<main>
+			<slot/>
+		</main>
+	</div>
+</body>
+</html>
 
 <style>
 .header {
