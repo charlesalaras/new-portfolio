@@ -1,17 +1,23 @@
 ---
 import BlogLayout from '@layout/BlogLayout.astro'
+import BlogPost from '@lib/BlogPost.svelte'
 ---
 
 <BlogLayout>
-	<div class="latest">
+	<div class="section latest">
 	<p>Latest Blog Post</p>
 	<hr/>
 	</div>
-	<div class="search">
+	<BlogPost 
+		 postTitle="Test Post" 
+		 byline="Here is a test blog post" 
+		 date="29th November 2023"
+	/>
+	<div class="section search">
 	<p>Search for Post</p>
 	<hr/>
 	</div>
-	<div class="filters">
+	<div class="section filters">
 	<p>Filters</p>
 	<hr/>
 	</div>
@@ -21,4 +27,13 @@ import BlogLayout from '@layout/BlogLayout.astro'
 </BlogLayout>
 
 <style>
+	.section {
+		width: 100%;
+		display: flex;
+		align-items: center;
+	}
+	.section hr {
+		flex-grow: 1;
+		margin-left: 0.5rem;
+	}
 </style>
