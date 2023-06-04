@@ -18,11 +18,13 @@ Use a better box model (opinionated).
 html {
 	/* Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3) */
 	font-family:
-		system-ui,
+		-apple-system, 
+		BlinkMacSystemFont,
 		'Segoe UI',
 		Roboto,
-		Helvetica,
-		Arial,
+		Oxygen-Sans,
+		Ubuntu,
+		Cantarell,
 		sans-serif,
 		'Apple Color Emoji',
 		'Segoe UI Emoji';

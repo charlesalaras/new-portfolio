@@ -1,4 +1,5 @@
 ---
+import Toggle from '@lib/Toggle.astro'
 import '../styles/global.css'
 ---
 <script is:inline>
@@ -29,8 +30,11 @@ import '../styles/global.css'
 	<title>Astro</title>
 </head>
 <body>
-	<div class="content">
-		<h1>Charles Alaras' Blog</h1>
+	<div class="app">
+		<div class="header">
+			<h1>Charles Alaras' Blog</h1>
+			<Toggle/>
+		</div>
 		<main>
 			<slot/>
 		</main>
@@ -40,17 +44,18 @@ import '../styles/global.css'
 
 <style>
 	@media (min-aspect-ratio: 6/5) {
-		.content {
-			width: calc(200vw / 3);
+		:root {
+			--content-width: calc(200vw / 3);
 		}
 	}
 	@media(max-aspect-ratio: 6/5) {
-		.content {
-			width: 95vw;
+		:root {
+			--content-width: 95vw;
 		}
 	}
-	.content {
+	.app {
 		height: 100vh;
+		width: var(--content-width);
 		padding: 0.5rem;
 	}
 	body {
@@ -65,21 +70,35 @@ import '../styles/global.css'
 	html body {
 		background-color: var(--bg-light);
 	}
+	.header {
+		position: fixed;
+		top: 0;
+		width: var(--content-width);
+		height: 8rem;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+	main {
+		padding-top: 8rem;
+	}
 	h1 {
 		margin: 0;
+		padding-top: 0.5rem;
 		font-weight: 900;
 		font-size: 4rem;
-		height: 8rem;
+		height: 6rem;
 	}
-	html.dark h1 {
+	html.dark .header {
 		background: linear-gradient(
-			var(--bg-dark) 75%,
+			var(--bg-dark) 50%,
 			transparent
 		);
 	}
-	html h1 {
+	html .header {
 		background: linear-gradient(
-			var(--bg-light) 75%,
+			var(--bg-light) 50%,
 			transparent
 		);
 	}
