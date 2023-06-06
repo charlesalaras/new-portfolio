@@ -1,11 +1,14 @@
 <script>
 	export let width;
-	export let name;
-	export let color;
 	export let index;
     export let scrollPos;
 
-	let deg;
+	export let title;
+	export let date;
+	export let header;
+	export let type;
+
+	let deg = 0;
 
 	function smoothstep (min, max, value) {
 		var x = Math.max(0, Math.min(1, (value-min)/(max-min)));
@@ -38,19 +41,19 @@
 	}
 </script>
 
-<div id="tridiv" style="--color: {color}; --size: {(width / 2000) * 200}%">
+<div id="tridiv" style="--color: red; --size: {(width / 2000) * 200}%">
   <div class="scene" style="transform:rotateX(0deg) rotateY({deg}deg); ">
     <div class="shape cuboid-1 cub-1">
       <div class="face ft">
-		<div class="title">{name}</div>
+		<div class="title">{title}</div>
 	  </div>
       <div class="face bk">
-		<div class="title">{name}</div>
+		<div class="title">{title}</div>
 	  </div>
       <div class="face rt">right</div>
       <div class="face lt">left</div>
       <div class="face bm">
-	  <div class="front-title">{name}</div>
+	  <div class="front-title">{title}</div>
 	  </div>
       <div class="face tp">top</div>
       <div class="cr cr-0">

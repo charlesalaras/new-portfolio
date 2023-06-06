@@ -1,24 +1,12 @@
 ---
 import MainLayout from '@layout/MainLayout.astro'
 import Projects from '@lib/Projects.svelte'
-/*
+
 import { getCollection } from 'astro:content'
 
 const allProjects = await getCollection('project')
-*/
----
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<MainLayout pathname={Astro.url.pathname}>
-			<p> testing! </p>
-		</MainLayout>
-	</body>
-</html>
+---
+<MainLayout pathname={Astro.url.pathname}>
+	<Projects client:only="svelte" projects={allProjects}/>
+</MainLayout>

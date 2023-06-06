@@ -5,6 +5,7 @@
     "paths": {
 	  "@lib/*": ["src/lib/*"],
 	  "@layout/*": ["src/layouts/*"]
-	}
+	},
+	"strictNullChecks": true
   }
 }
