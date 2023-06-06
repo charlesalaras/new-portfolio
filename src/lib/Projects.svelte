@@ -1,9 +1,10 @@
 <script>
 	import Project from '@lib/Project.svelte'
 
+	
 	export let projects;
 	let innerWidth;
-	let offset;
+	let offset = 0;
 
 	function verticalDrag(node) {
 		node.addEventListener('wheel', (evt) => {
@@ -20,12 +21,12 @@
 	<div class="carousel" use:verticalDrag>
 		{#each projects as project, i}
 			{#if i == 0}
-			<li style="margin-left: 37.5 vw;">
+			<li id="project-{i}" style="margin-left: 37.5vw;">
 				<Project width={innerWidth} scrollPos={offset} index={i} {...project.data}/>
 			</li>
 			{:else}
 				{#if i == projects.length - 1}
-				<li style="margin-right: 37.5 vw;">
+				<li style="margin-right: 37.5vw;">
 					<Project width={innerWidth} scrollPos={offset} index={i} {...project.data}/>
 				</li>
 				{:else}

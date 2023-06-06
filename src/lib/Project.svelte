@@ -15,6 +15,7 @@
   		return x*x*(3 - 2*x);
 	};
 
+
 	$: {
 	let origin = scrollPos - (index * 0.25 * width); // offset towards zero
 	let itemWidth = 0.25 * width;
@@ -50,12 +51,12 @@
       <div class="face bk">
 		<div class="title">{title}</div>
 	  </div>
-      <div class="face rt">right</div>
-      <div class="face lt">left</div>
+      <div class="face rt"></div>
+      <div class="face lt"></div>
       <div class="face bm">
 	  <div class="front-title">{title}</div>
 	  </div>
-      <div class="face tp">top</div>
+      <div class="face tp"></div>
       <div class="cr cr-0">
         <div class="face side s0"></div>
         <div class="face side s1"></div>
