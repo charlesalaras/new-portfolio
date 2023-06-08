@@ -42,7 +42,7 @@
 	}
 </script>
 
-<div id="tridiv" style="--color: red; --size: {(width / 2000) * 200}%">
+<div id="tridiv" style="--color: rgba(50,50,50,1); --size: {(width / 2000) * 200}%">
   <div class="scene" style="transform:rotateX(0deg) rotateY({deg}deg); ">
     <div class="shape cuboid-1 cub-1">
       <div class="face ft">

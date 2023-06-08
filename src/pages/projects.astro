@@ -10,3 +10,4 @@ const allProjects = await getCollection('project')
 <MainLayout pathname={Astro.url.pathname}>
 	<Projects client:only="svelte" projects={allProjects}/>
 </MainLayout>
+
