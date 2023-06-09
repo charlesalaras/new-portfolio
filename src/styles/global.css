@@ -2,10 +2,14 @@
 @import "var.css";
 /* Root */
 html.dark {
-	color: var(--fg-dark);
+	--foreground: var(--fg-dark);
+	color: var(--foreground);
+	fill: var(--foreground);
 }
 html {
-	color: var(--fg-light);
+	--foreground: var(--fg-light);
+	color: var(--foreground);
+	fill: var(--foreground);
 }
 html.dark .inner-bg {
 	filter: brightness(7%);
@@ -91,4 +95,19 @@ html.dark .bar:before {
 		var(--primary-dark),
 		transparent
 	);
+}
+/* Projects */
+html .face {
+	box-shadow: 0 0 0 2px var(--primary-light);
+}
+html.dark .face {
+	box-shadow: 0 0 0 2px var(--primary-dark);
+}
+html .chip {
+	--chip-color: var(--primary-light);
+	--chip-hover: rgba(0, 97, 253, 0.5);
+}
+html.dark .chip {
+	--chip-color: var(--primary-dark);
+	--chip-hover: rgba(0, 136, 255, 0.5)
 }

@@ -54,7 +54,10 @@
       <div class="face rt"></div>
       <div class="face lt"></div>
       <div class="face bm">
-	  <div class="front-title">{title}</div>
+	  <div class="front-title">
+	  	<span>{title}</span>
+		<span class="date">{date}</span>
+	  </div>
 	  </div>
       <div class="face tp"></div>
       <div class="cr cr-0">
@@ -83,13 +86,15 @@
 
 <style>
 .front-title {
-	writing-mode: vertical-lr;
+	text-align: center;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 0.5rem;
 	width: 100%;
 	height: 100%;
-	transform: rotate(180deg);
+	transform: rotate(270deg);
 	font-weight: 900;
 }
 .title {
@@ -101,6 +106,10 @@
 	justify-content: center;
 	font-weight: 900;
 }
+.date {
+	font-size: 1rem;
+	font-weight: 400;
+}
 #tridiv {
   perspective: 800px;
   overflow: hidden;
@@ -108,9 +117,6 @@
   height: 80vh;
   font-size: var(--size);
   user-select: none;
-}
-.face {
-  box-shadow: 0 0 0 2px rgba(12, 12, 12, 1);
 }
 .scene, .shape, .face, .face-wrapper, .cr {
   position: absolute;

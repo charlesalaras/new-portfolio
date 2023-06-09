@@ -8,6 +8,6 @@ const allProjects = await getCollection('project')
 
 ---
 <MainLayout pathname={Astro.url.pathname}>
-	<Projects client:only="svelte" projects={allProjects}/>
+	<Projects client:only="svelte" projects={allProjects.map(entry => entry.data)}/>
 </MainLayout>
 
