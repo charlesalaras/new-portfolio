@@ -1,12 +1,15 @@
 <script>
 	import Project from '@lib/Project.svelte'
-	import Chip from '@lib/Chip.svelte'
-	
-	export let projects;
+	import Filter from '@lib/Filter.svelte'
+
+	import { fade } from 'svelte/transition'
+
+	export let projects = [];
+	let currProjects = projects;
 	let innerWidth;
 	let offset = 0;
 
-	let query;
+	let query = "";
 
 	let filters = {
 		"programming": false,
@@ -20,6 +23,41 @@
 		filters[filter] = !filters[filter];
 	}
 
+	const updateProjects = (query) => {
+		currProjects = [];
+		if(query === "") {
+			currProjects = projects;
+			return;
+		}
+
+		for(var i = 0; i < projects.length; i++) {
+			if(fuzzySearch(query.toLowerCase(), projects[i].title.toLowerCase())) {
+				currProjects.push(projects[i]);
+			}
+		}
+	}
+	// Provided by https://github.com/bevacqua/fuzzysearch
+	function fuzzySearch(needle, haystack) {
+		var hlen = haystack.length;
+		var nlen = needle.length;
+		if(nlen > hlen) {
+			return false;
+		}
+		if(nlen === hlen) {
+			return needle === haystack;
+		}
+		outer: for(var i = 0, j = 0; i < nlen; i++) {
+			var nch = needle.charCodeAt(i);
+			while(j < hlen) {
+				if(haystack.charCodeAt(j++) === nch) {
+					continue outer;
+				}
+			}
+			return false;
+		}
+		return true;
+	}
+
 	function verticalDrag(node) {
 		node.addEventListener('wheel', (evt) => {
 			evt.preventDefault();
@@ -27,7 +65,7 @@
 		});
 		node.addEventListener('scroll', (evt) => { offset = node.scrollLeft });
 	}
-	console.log(projects);
+	$: query, updateProjects(query);
 </script>
 
 <svelte:window bind:innerWidth/>
@@ -37,26 +75,25 @@
 		<input type="text" name="search" placeholder="Search" bind:value={query}>
 	</div>
 	<div class="filters">
-		<Chip color="var(--foreground)" content="Reset" />
-		<Chip content="Programming" />
-		<Chip content="Engineering" />
-		<Chip content="Video Editing" />
-		<Chip content="Event Production" />
-		<Chip content="Graphic Design" />
+		<Filter content="Programming" />
+		<Filter content="Engineering" />
+		<Filter content="Video Editing" />
+		<Filter content="Event Production" />
+		<Filter content="Graphic Design" />
 	</div>
 	<div class="carousel" use:verticalDrag>
-		{#each projects as project, i}
+		{#each currProjects as project, i}
 			{#if i == 0}
-			<li style="margin-left: 37.5vw;">
+			<li transition:fade style="margin-left: 37.5vw;">
 				<Project width={innerWidth} scrollPos={offset} index={i} {...project}/>
 			</li>
 			{:else}
 				{#if i == projects.length - 1}
-				<li style="margin-right: 37.5vw;">
+				<li transition:fade style="margin-right: 37.5vw;">
 					<Project width={innerWidth} scrollPos={offset} index={i} {...project}/>
 				</li>
 				{:else}
-				<li><Project width={innerWidth} scrollPos={offset} index={i} {...project}/></li>
+				<li transition:fade><Project width={innerWidth} scrollPos={offset} index={i} {...project}/></li>
 				{/if}
 			{/if}
 		{/each}
