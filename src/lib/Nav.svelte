@@ -70,6 +70,8 @@ const margin = percents[pathname]
 	}
 	/* Bar Markup */
 	.bar {
+		align-self: center;
+		justify-self: center;
 		width: 50%;
 		border-radius: calc(2rem / 3);
 		box-sizing: border-box;

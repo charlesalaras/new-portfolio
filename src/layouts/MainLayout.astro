@@ -56,10 +56,17 @@ const { pathname } = Astro.props
 
 <style>
 .header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100vw;
+	display: grid;
+	grid-template-columns: 0.25fr 2.5fr 0.25fr;
 	padding: 0.5rem 2rem 0.5rem 2rem;
 	font-weight: 600;
+	z-index: 2;
+}
+.app {
+	z-index: 0;
 }
 </style>

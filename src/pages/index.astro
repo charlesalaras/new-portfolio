@@ -1,10 +1,9 @@
 ---
 import MainLayout from '@layout/MainLayout.astro'
+import Home from '@lib/Home.svelte'
 ---
 
 <MainLayout pathname={Astro.url.pathname}>
-	<div class="content">
-		
-	</div>
+	<Home client:only="svelte"/>
 </MainLayout>
 
