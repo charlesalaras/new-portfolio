@@ -24,6 +24,7 @@ html .icon {
 .hc {
     backdrop-filter: blur(4px);
 	padding: 1rem;
+	font-weight: 600;
 }
 html .hc {
 	background: rgba(219, 219, 219, 0.5);

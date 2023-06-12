@@ -26,12 +26,9 @@ function verticalDrag(node) {
 
 <style>
 .content {
-	position: absolute;
-	left: 0px;
-	top: 0px;
 	width: 100%;
 	height: 100%;
-	overflow-x: auto;
+	overflow: hidden;
 	white-space: nowrap;
 
 }
@@ -47,7 +44,7 @@ span {
 	text-align: center;
 	font-size: 8rem;
 	font-weight: 900;
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 }
 </style>
