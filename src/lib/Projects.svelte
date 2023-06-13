@@ -117,15 +117,11 @@ input[type=text] {
 	justify-content: center;
 }
 .content {
-	overflow: hidden;
-	position: absolute;
-	left: 0px;
-	top: 0px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin-top: 5rem;
+	margin-top: 2rem;
 }
 .carousel {
 	width: 100vw;
