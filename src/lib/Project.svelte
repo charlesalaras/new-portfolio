@@ -42,7 +42,11 @@
 	}
 </script>
 
-<div id="tridiv" style="--color: rgba(50,50,50,1); --size: {(width / 2000) * 200}%">
+<div id="tridiv" style="
+	--color: rgba(50,50,50,1); 
+	--size: {(width / 2000) * 200}%;
+	--mask-opacity: {0.5 - Math.abs(deg) * (0.5 / 90)};
+	--header: url('{header}');">
   <div class="scene" style="transform:rotateX(0deg) rotateY({deg}deg); ">
     <div class="shape cuboid-1 cub-1">
       <div class="face ft">
@@ -96,6 +100,22 @@
 	height: 100%;
 	transform: rotate(270deg);
 	font-weight: 900;
+}
+.bm {
+	background: var(--header) !important;
+	background-position: center;
+	background-size: auto;
+	background-repeat: no-repeat;
+}
+.bm::before {
+	position: absolute;
+	content: "";
+	width: 100%;
+	height: 100%;
+	background-color: red;
+	transition: opacity 0.1s ease;
+	opacity: var(--mask-opacity);
+	z-index: -1;
 }
 .title {
 	width: 100%;

@@ -1,4 +1,6 @@
 <script>
+import Section from '@lib/Section.svelte';
+
 let innerWidth;
 let offset;
 
@@ -13,15 +15,57 @@ function verticalDrag(node) {
 </script>
 
 <svelte:window bind:innerWidth/>
-<div class="container">
+<div class="container" use:verticalDrag>
 <div class="content">
 	<div class="section landing">Hello! I'm Charles Alaras</div>
-	<div class="section programming">I'm a <a href="/projects">Programmer</a></div>
-	<div class="section engineering">I'm an <a href="/projects">Engineer</a></div>
-	<div class="section editing">I'm a <a href="/projects">Video Editor</a></div>
-	<div class="section production">I'm an <a href="/projects">Event Producer</a></div>
-	<div class="section design">and I'm a <a href="/projects">Graphic Designer</a></div>
-	<div class="section contact">Ready to build together? <a href="/contact">Let's do it.</a></div>
+	<Section 
+		className="programming"
+		content="I'm a "
+		linkContent="Programmer"
+		link="/projects"
+		icon="./icons/terminal-fill.svg"
+		images={[]}
+	/>
+	<Section 
+		className="engineering"
+		content="I'm an "
+		linkContent="Engineer"
+		link="/projects"
+		icon="./icons/cpu-fill.svg"
+		images={[]}
+	/>
+	<Section 
+		className="editing"
+		content="I'm a "
+		linkContent="Video Editor"
+		link="/projects"
+		icon="./icons/film.svg"
+		images={[]}
+	/>
+	<Section 
+		className="production"
+		content="I'm an "
+		linkContent="Event Producer"
+		link="/projects"
+		icon="./icons/calendar-day-fill.svg"
+		images={[]}
+	/>
+	<Section 
+		className="design"
+		content="and I'm a "
+		linkContent="Graphic Designer"
+		link="/projects"
+		icon="./icons/bezier2.svg"
+		images={[]}
+	/>
+	<Section 
+		className="contact"
+		content="Ready to build together? "
+		linkContent="Let's do it."
+		link="/contact"
+		icon="./icons/rulers.svg"
+		images={[]}
+	/>
 </div>
 </div>
 <style>
@@ -29,12 +73,12 @@ function verticalDrag(node) {
 	width: 100vw;
 	height: 100%;
 	overflow-x: scroll;
+	scrollbar-width: none;
 }
 .content {
 	display: flex;
 	width: fit-content;
 	height: 100%;
-
 }
 .section {
 	flex: 0 0 100vw;
