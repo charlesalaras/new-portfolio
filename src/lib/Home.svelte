@@ -22,7 +22,7 @@ function verticalDrag(node) {
 		className="programming"
 		content="I'm a "
 		linkContent="Programmer"
-		link="/projects"
+		link="/projects?filter=b"
 		icon="./icons/terminal-fill.svg"
 		images={[]}
 	/>
@@ -30,7 +30,7 @@ function verticalDrag(node) {
 		className="engineering"
 		content="I'm an "
 		linkContent="Engineer"
-		link="/projects"
+		link="/projects?filter=c"
 		icon="./icons/cpu-fill.svg"
 		images={[]}
 	/>
@@ -38,7 +38,7 @@ function verticalDrag(node) {
 		className="editing"
 		content="I'm a "
 		linkContent="Video Editor"
-		link="/projects"
+		link="/projects?filter=d"
 		icon="./icons/film.svg"
 		images={[]}
 	/>
@@ -46,7 +46,7 @@ function verticalDrag(node) {
 		className="production"
 		content="I'm an "
 		linkContent="Event Producer"
-		link="/projects"
+		link="/projects?filter=e"
 		icon="./icons/calendar-day-fill.svg"
 		images={[]}
 	/>
@@ -54,7 +54,7 @@ function verticalDrag(node) {
 		className="design"
 		content="and I'm a "
 		linkContent="Graphic Designer"
-		link="/projects"
+		link="/projects?filter=f"
 		icon="./icons/bezier2.svg"
 		images={[]}
 	/>

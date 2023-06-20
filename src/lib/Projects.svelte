@@ -1,4 +1,11 @@
 <script>
+	/*
+		NOTE ON FILTERING:
+		Here's how filtering works: There's five categories to choose from, its essentially a subset problem.
+		There's 32 sets, so we'll use the alphabet (26) + 1-6 for values.
+		Each alphanum character represents a filter combination, 'a' is none, '6' is all.
+		We need a lookup table to know which filters to toggle.
+	*/
 	import Project from '@lib/Project.svelte'
 	import Filter from '@lib/Filter.svelte'
 
@@ -106,7 +113,7 @@ input[type=text] {
 	border: none;
 	height: 2rem;
 	padding-left: 2rem;
-	background-image: url('./search.svg');
+	background-image: url('./icons/search.svg');
 	background-repeat: no-repeat;
 	background-position: 0.5rem 0.5rem;
 	background-size: 1rem;

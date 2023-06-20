@@ -5,10 +5,16 @@ export let linkContent;
 export let link = "#";
 export let icon;
 export let images = [];
+export let center = false;
 </script>
 
 <div class="section {className}">
 <div class="section-icon" style="background-image: url('{icon}')"></div>
+{#if images.length != 0}
+{#each images as image}
+<div class="image" style="background-image: url('{image}')"></div>
+{/each}
+{/if}
 {content}
 <a href="{link}">{linkContent}</a>
 </div>
@@ -26,6 +32,13 @@ a {
 	height: 60vh;
 	opacity: 0.75;
 	z-index: -1;
+}
+.image {
+	position: absolute;
+	width: 10%;
+	height: 30vh;
+	background-color: red;
+	border-radius: 14px;
 }
 .section {
 	position: relative;

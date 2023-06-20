@@ -62,7 +62,7 @@ const margin = percents[pathname]
 	.bi-box-arrow-up-right {
 		display: inline-block;
 		margin-left: 0.5rem;
-		mask: url("box-arrow-up-right.svg") no-repeat 50% 50%;
+		mask: url("./icons/box-arrow-up-right.svg") no-repeat 50% 50%;
 	}
 	.icon {
 		width: 16px;
