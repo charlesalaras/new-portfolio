@@ -1,0 +1,39 @@
+<script>
+	function submitForm() {
+		// Use SMTP server-side to send the form to my email, and send a confirmation email to the user.
+		// Ideally, we should run some captcha validation / rate limiting from a single IP as well.
+	}
+</script>
+
+<form on:submit|preventDefault={submitForm}>
+	<label for="name">Name:</label>
+	<input type="text" id="name" name="name" required>
+
+	<label for="company">Company:</label>
+	<input type="text" id="company" name="company">
+
+	<label for="email">Email:</label>
+	<input type="email" id="email" name="email" required>
+	
+	<label for="subject">Subject:</label>
+	<select id="subject" name="subject" required>
+		<option value="programming">Programming</option>
+		<option value="engineering">Engineering</option>
+		<option value="editing">Video Editing</option>
+		<option value="production">Event Production</option>
+		<option value="design">Graphic Design</option>
+		<option value="other">Other</option>
+	</select>
+
+	<label for="message">Message:</label>
+	<input type="textarea" id="message" name="message" required>
+
+	<input type="submit" value="Submit">
+</form>
+
+<style>
+input {
+	border-radius: 1rem;
+	height: 2rem;
+}
+</style>
