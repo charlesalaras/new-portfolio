@@ -32,8 +32,19 @@
 </form>
 
 <style>
-input {
+form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+input, select {
+	border: none;
 	border-radius: 1rem;
 	height: 2rem;
+	padding: 0px 1rem;
+}
+label {
+	font-weight: 600;
 }
 </style>

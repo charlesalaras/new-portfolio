@@ -3,22 +3,23 @@
 /* Root */
 html.dark {
 	--foreground: var(--fg-dark);
+	--background: var(--bg-dark);
+	--primary: var(--primary-dark);
 	color: var(--foreground);
 	fill: var(--foreground);
 }
 html {
 	--foreground: var(--fg-light);
+	--background: var(--bg-light);
+	--primary: var(--primary-light);
 	color: var(--foreground);
 	fill: var(--foreground);
 }
 html.dark .inner-bg {
 	filter: brightness(7%);
 }
-html.dark .icon {
-	background-color: var(--fg-dark);
-}
 html .icon {
-	background-color: var(--fg-light);
+	background-color: var(--foreground);
 }
 /* Header Components */
 .hc {
@@ -52,19 +53,8 @@ html hr {
 		to right,
 		transparent,
 		transparent 25%,
-		var(--fg-light) 25%,
-		var(--fg-light) 75%,
-		transparent 75%,
-		transparent
-	);
-}
-html.dark hr {
-	background: linear-gradient(
-		to right,
-		transparent,
-		transparent 25%,
-		var(--fg-dark) 25%,
-		var(--fg-dark) 75%,
+		var(--foreground) 25%,
+		var(--foreground) 75%,
 		transparent 75%,
 		transparent
 	);
@@ -72,43 +62,23 @@ html.dark hr {
 html .bar:after {
 	background: linear-gradient(90deg,
 		transparent,
-		var(--primary-light),
-		transparent
-	);
-}
-html.dark .bar:after {
-	background: linear-gradient(90deg,
-		transparent,
-		var(--primary-dark),
+		var(--primary),
 		transparent
 	);
 }
 html .bar:before {
 	background: linear-gradient(90deg,
 		transparent,
-		var(--primary-light),
-		transparent
-	);
-}
-html.dark .bar:before {
-	background: linear-gradient(90deg,
-		transparent,
-		var(--primary-dark),
+		var(--primary),
 		transparent
 	);
 }
 /* Projects */
 html .face {
-	box-shadow: 0 0 0 2px var(--primary-light);
+	box-shadow: 0 0 0 2px var(--primary);
 }
-html.dark .face {
-	box-shadow: 0 0 0 2px var(--primary-dark);
-}
+/* FIXME: Change Chip Hover */
 html .chip {
-	--chip-color: var(--primary-light);
+	--chip-color: var(--primary);
 	--chip-hover: rgba(0, 97, 253, 0.5);
-}
-html.dark .chip {
-	--chip-color: var(--primary-dark);
-	--chip-hover: rgba(0, 136, 255, 0.5)
 }

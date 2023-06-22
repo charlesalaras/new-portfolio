@@ -1,19 +1,23 @@
 ---
 import MainLayout from '@layout/MainLayout.astro'
+import Form from '@lib/Form.svelte'
+import AsciiArt from '@lib/AsciiArt.svelte'
 ---
 <MainLayout pathname={Astro.url.pathname}>
 <div class="container">
 	<div class="form">
-
+		<Form/>
 	</div>
 	<div class="ascii">
-
+		<AsciiArt/>
 	</div>
 </div>
 </MainLayout>
 
 <style>
-.container {  
+.container { 
+  width: 100vw;
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 100%;
@@ -25,11 +29,15 @@ import MainLayout from '@layout/MainLayout.astro'
 }
 
 .form {
+  width: 80%;
+  height: 80%;
   justify-self: center;
   align-self: center;
   grid-area: form;
 }
 .ascii {
+  width: 80%;
+  height: 80%;
   justify-self: center;
   align-self: center;
   grid-area: ascii;
