@@ -28,7 +28,7 @@
 	<label for="message">Message:</label>
 	<input type="textarea" id="message" name="message" required>
 
-	<input type="submit" value="Submit">
+	<button type="submit">Submit</button>
 </form>
 
 <style>
@@ -37,8 +37,22 @@ form {
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
+	align-items: center;
+}
+label {
+	width: 90%;
 }
 input, select {
+	width: 100%;
+	border: none;
+	border-radius: 1rem;
+	height: 2rem;
+	padding: 0px 1rem;
+}
+button[type="submit"] {
+	display: inline-block;
+	color: var(--foreground);
+	background-color: var(--primary);
 	border: none;
 	border-radius: 1rem;
 	height: 2rem;
@@ -46,5 +60,10 @@ input, select {
 }
 label {
 	font-weight: 600;
+}
+.send-fill {
+	width: 2rem;
+	height: 2rem;
+	background-color: red;
 }
 </style>
