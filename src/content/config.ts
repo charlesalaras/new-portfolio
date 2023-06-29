@@ -6,9 +6,9 @@ const blog = defineCollection({
 		title: z.string(),
 		byline: z.string(),
 		date: z.date(),
-		tags: z.array(z.object({ icon: z.string(), content: z.string() })),
+		tags: z.array(z.string()),
 		image: z.string().optional(),
-		relatedPosts: z.array(reference('blog')),
+		relatedPosts: z.array(reference('blog')).optional(),
 	}),
 });
 
@@ -18,7 +18,7 @@ const project = defineCollection({
 		title: z.string(),
 		date: z.string(),
 		header: z.string(),
-		type: z.string()
+		type: z.array(z.string())
 	}),
 });
 

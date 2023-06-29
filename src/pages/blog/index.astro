@@ -1,6 +1,11 @@
 ---
 import BlogLayout from '@layout/BlogLayout.astro'
 import BlogPost from '@lib/BlogPost.svelte'
+
+import { getCollection } from 'astro:content'
+
+const allPosts = await getCollection('blog')
+
 ---
 
 <BlogLayout>
@@ -8,11 +13,6 @@ import BlogPost from '@lib/BlogPost.svelte'
 	<p>Latest Blog Post</p>
 	<hr/>
 	</div>
-	<BlogPost 
-		 postTitle="Test Post" 
-		 byline="Here is a test blog post" 
-		 date="29th November 2023"
-	/>
 	<div class="section search">
 	<p>Search for Post</p>
 	<hr/>
@@ -21,9 +21,15 @@ import BlogPost from '@lib/BlogPost.svelte'
 	<p>Filters</p>
 	<hr/>
 	</div>
-	<div class="listings">
-
+	<div class="section listings">
+	<p>Results</p>
+	<hr/>
 	</div>
+	{
+	allPosts.map((post) => (
+	<BlogPost postTitle={post.data.title} byline={post.data.byline} date={post.data.date} tags={post.data.tags}/>
+	))
+	}
 </BlogLayout>
 
 <style>

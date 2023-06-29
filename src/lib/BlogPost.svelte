@@ -13,7 +13,7 @@
 	<p id="post-date">Posted on {date}</p>
 	<div class="tags">
 		{#each tags as tag}
-			<Chip icon={tag.icon} content={tag.content}/>
+			<Chip content={tag}/>
 		{/each}
 	</div>
 </div>
@@ -30,6 +30,8 @@ h1 {
 	font-size: 1.25rem;
 }
 .tags {
-	height: 1.5rem;
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
 }
 </style>
