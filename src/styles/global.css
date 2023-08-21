@@ -1,84 +1,30 @@
-@import "modern-normalize.css";
-@import "var.css";
-/* Root */
-html.dark {
-	--foreground: var(--fg-dark);
-	--background: var(--bg-dark);
-	--primary: var(--primary-dark);
-	color: var(--foreground);
-	fill: var(--foreground);
-}
+@import 'var.css';
+
 html {
-	--foreground: var(--fg-light);
-	--background: var(--bg-light);
-	--primary: var(--primary-light);
-	color: var(--foreground);
-	fill: var(--foreground);
+	--bg0: var(--light-bg0);
+	--bg1: var(--light-bg1);
+	--bg2: var(--light-bg2);
+	--dim: var(--light-dim);
+	--fg0: var(--light-fg0);
+	--fg1: var(--light-fg1);
+	--blue: var(--light-blue);
+	--br_blue: var(--light-br_blue);
+	background: url('bg.svg'), var(--bg0);
 }
-html.dark .inner-bg {
-	filter: brightness(7%);
+html.dark {
+	--bg0: var(--dark-bg0);
+	--bg1: var(--dark-bg1);
+	--bg2: var(--dark-bg2);
+	--dim: var(--dark-dim);
+	--fg0: var(--dark-fg0);
+	--fg1: var(--dark-fg1);
+	--blue: var(--dark-blue);
+	--br_blue: var(--dark-br_blue);
+	background: url('dbg.svg'), var(--bg0);
 }
-html .icon {
-	background-color: var(--foreground);
+h1 {
+	font-size: 1.1rem;
 }
-/* Header Components */
-.hc {
-    backdrop-filter: blur(4px);
-	padding: 1rem;
-	font-weight: 600;
-}
-html .hc {
-	background: rgba(219, 219, 219, 0.5);
-	border: 1px solid rgba(219, 219, 219, 1);
-}
-html.dark .hc {
-	background: rgba(36, 36, 36, 0.5);
-	border: 1px solid rgba(36, 36, 36, 1);
-}
-a {
-	color: inherit;
-	text-decoration: none;
-}
-.header:hover .bar {
-	transition: 0.3s;
-	transform: scale(1);
-}
-.header .bar {
-	transition: 0.3s;
-	transform: scale(0.75);
-}
-/* Nav Bar */
-html hr {
-	background: linear-gradient(
-		to right,
-		transparent,
-		transparent 25%,
-		var(--foreground) 25%,
-		var(--foreground) 75%,
-		transparent 75%,
-		transparent
-	);
-}
-html .bar:after {
-	background: linear-gradient(90deg,
-		transparent,
-		var(--primary),
-		transparent
-	);
-}
-html .bar:before {
-	background: linear-gradient(90deg,
-		transparent,
-		var(--primary),
-		transparent
-	);
-}
-/* Projects */
-html .face {
-	box-shadow: 0 0 0 2px var(--primary);
-}
-/* FIXME: Change Chip Hover */
-html .chip {
-	--chip-color: var(--primary);
-	--chip-hover: rgba(0, 97, 253, 0.5);
+::selection {
+	background: var(--bg2);
 }
