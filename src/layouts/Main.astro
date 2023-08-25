@@ -24,6 +24,9 @@ const params = Astro.params
 	}
 	window.localStorage.setItem("theme", theme);
 </script>
+<head>
+	<link rel="icon" href="./lighticon.ico">
+</head>
 <html lang="en">
 	<body>
 		<div class="titles">
@@ -77,7 +80,7 @@ const params = Astro.params
 	.breakpoint {
 		height: 100%;
 		width: 4rem;
-		background: linear-gradient(var(--dim), var(--dim)) no-repeat center/1px 100%;
+		background: linear-gradient(var(--dim) 3rem, var(--blue) 6rem, var(--dim) 9rem) no-repeat center/1px 100%;
 	}
 	.progress {
 		width: 4rem;
@@ -97,7 +100,7 @@ const params = Astro.params
 		border-radius: 50%;
 	}
 	.content {
-		width: 75ch;
+		width: 55ch;
 	}
 	.header {
 		display: flex;
