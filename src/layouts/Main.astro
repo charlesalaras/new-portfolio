@@ -1,47 +1,78 @@
 ---
 import '../../node_modules/modern-normalize/modern-normalize.css'
 import '../styles/global.css'
+import Toggle from '@lib/Toggle.astro'
+
+const pathname = Astro.url.pathname
+const params = Astro.params
 ---
+<script is:inline>
+	const theme = (() => {
+		if(typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+			return localStorage.getItem("theme");
+		}
+		if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
+			return "dark";
+		}
+		return "light";
+	})();
+
+	if(theme === "light") {
+		document.documentElement.classList.remove("dark");
+	} else {
+		document.documentElement.classList.add("dark");
+	}
+	window.localStorage.setItem("theme", theme);
+</script>
 <html lang="en">
 	<body>
 		<div class="titles">
-			<h1>Charles Alaras</h1>
-			<h1>Home</h1>
-			<h1>About</h1>
-			<h1>Projects</h1>
-			<h1>Contact</h1>
-			<h1>Epilogue</h1>
+			<h1 class="header"><Toggle/>Charles Alaras</h1>
+			<h1 class={pathname === "/" || pathname === "/#" ? "active" : "inactive"}><a href="#">Home</a></h1>
+			<h1 class={pathname === "/#about" ? "active" : "inactive"}><a href="#about">About</a></h1>
+			<h1 class={pathname === "/#projects" ? "active" : "inactive"}><a href="#projects">Projects</a></h1>
+			<h1 class={pathname === "/#contact" ? "active" : "inactive"}><a href="#contact">Contact</a></h1>
+			<h1 class={pathname === "/#epilogue" ? "active" : "inactive"}><a href="#epilogue">Epilogue</a></h1>
 		</div>
 		<div class="breakpoint">
 			<div class="progress">
 				<div class="indicator"></div>
 			</div>
 		</div>
-		<slot/>
+		<div class="content">
+			<slot/>
+		</div>
 	</body>
 </html>
 
 <style>
 	html {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		color: var(--fg0);
 		width: 100vw;
 		height: 100vh;
-		background-size: cover;
-		background-position: bottom;
-		background-repeat: no-repeat;
+		background-size: cover !important;
+		background-position: bottom !important;
+		background-repeat: no-repeat !important;
 	}
 	body {
 		width: 100%;
-		height: 100%;
+		height: 24rem;
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
+		gap: 1rem;
 	}
 	.titles {
 		height: 100%;
 		font-weight: 700;
 		text-align: right;
+	}
+	h1.inactive {
+		color: var(--dim);
 	}
 	.breakpoint {
 		height: 100%;
@@ -64,5 +95,14 @@ import '../styles/global.css'
 		width: 100%;
 		height: 100%;
 		border-radius: 50%;
+	}
+	.content {
+		width: 75ch;
+	}
+	.header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 0.5rem;
 	}
 </style>
