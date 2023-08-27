@@ -39,7 +39,9 @@ const params = Astro.params
 		</div>
 		<div class="breakpoint">
 			<div class="progress">
-				<div class="indicator"></div>
+				<svg>
+					<circle class="indicator" cx="50%" cy="50%" r="0.75rem"/>
+				</svg>
 			</div>
 		</div>
 		<div class="content">
@@ -91,13 +93,16 @@ const params = Astro.params
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0.5rem;
+		padding: 0.25rem;
 	}
-	.indicator {
-		background: var(--blue);
+	svg {
 		width: 100%;
 		height: 100%;
-		border-radius: 50%;
+	}
+	.indicator {
+		fill: transparent;
+		stroke: var(--blue);
+		stroke-width: 1.5rem;
 	}
 	.content {
 		width: 55ch;
