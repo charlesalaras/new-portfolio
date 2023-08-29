@@ -10,7 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@swup/astro": "^1.3.0",
     "astro": "^2.5.7",
+    "astro-compressor": "^0.4.0",
     "modern-normalize": "^2.0.0"
   }
 }
