@@ -3,8 +3,25 @@ import '../../node_modules/modern-normalize/modern-normalize.css'
 import '../styles/global.css'
 import Toggle from '@lib/Toggle.astro'
 
-const pathname = Astro.url.pathname
-const params = Astro.params
+const translations = {
+	"/": "0rem",
+	"/about": "4rem",
+	"/projects": "8rem",
+	"/contact": "12rem",
+	"/epilogue": "16rem"
+};
+
+const strokes = {
+	"/": "4.71em",
+	"/about": "3.768em",
+	"/projects": "2.826em",
+	"/contact": "1.884em",
+	"/epilogue": "0.942em"
+};
+
+const { pathname } = Astro.props
+const translation = translations[pathname]
+const semicircle = strokes[pathname]
 ---
 <script is:inline>
 	const theme = (() => {
@@ -29,28 +46,28 @@ const params = Astro.params
 </head>
 <html lang="en">
 	<body>
-		<div class="titles">
+		<div class="titles" id="sections">
 			<h1 class="header"><Toggle/>Charles Alaras</h1>
-			<h1 class={pathname === "/" || pathname === "/#" ? "active" : "inactive"}><a href="#">Home</a></h1>
-			<h1 class={pathname === "/#about" ? "active" : "inactive"}><a href="#about">About</a></h1>
-			<h1 class={pathname === "/#projects" ? "active" : "inactive"}><a href="#projects">Projects</a></h1>
-			<h1 class={pathname === "/#contact" ? "active" : "inactive"}><a href="#contact">Contact</a></h1>
-			<h1 class={pathname === "/#epilogue" ? "active" : "inactive"}><a href="#epilogue">Epilogue</a></h1>
+				<h1 class={pathname === "/" ? "active" : "inactive"}><a href="/">Home</a></h1>
+				<h1 class={pathname === "/about" ? "active" : "inactive"}><a href="/about">About</a></h1>
+				<h1 class={pathname === "/projects" ? "active" : "inactive"}><a href="/projects">Projects</a></h1>
+				<h1 class={pathname === "/contact" ? "active" : "inactive"}><a href="/contact">Contact</a></h1>
+				<h1 class={pathname === "/epilogue" ? "active" : "inactive"}><a href="/epilogue">Epilogue</a></h1>
 		</div>
-		<div class="breakpoint">
+		<div class="breakpoint" id="lines">
 			<div class="progress">
 				<svg>
-					<circle class="indicator" cx="50%" cy="50%" r="0.75rem"/>
+					<circle class="indicator" cx="50%" cy="50%" r="0.75em" id="indicator"/>
 				</svg>
 			</div>
 		</div>
-		<div class="content">
+		<main>
 			<slot/>
-		</div>
+		</main>
 	</body>
 </html>
 
-<style>
+<style define:vars={{ translation, semicircle }}>
 	html {
 		display: flex;
 		justify-content: center;
@@ -82,7 +99,16 @@ const params = Astro.params
 	.breakpoint {
 		height: 100%;
 		width: 4rem;
-		background: linear-gradient(var(--dim) 3rem, var(--blue) 6rem, var(--dim) 9rem) no-repeat center/1px 100%;
+		background: linear-gradient(var(--dim), var(--dim)) no-repeat center/1px 100%;
+	}
+	.breakpoint:after {
+		display: inline-block;
+		content: "";
+		width: 4rem;
+		height: 4rem;
+		background: linear-gradient(transparent, var(--blue), transparent) no-repeat center/2px 100%;
+		transform: translateY(var(--translation));
+		transition: all 0.2s ease-in-out;
 	}
 	.progress {
 		width: 4rem;
@@ -99,25 +125,17 @@ const params = Astro.params
 		width: 100%;
 		height: 100%;
 	}
-	@keyframes progress {
-		0% {
-			stroke-dashoffset: 4.71rem;
-		}
-		100% {
-			stroke-dashoffset: 0rem;
-		}
-	}
 	.indicator {
 		fill: transparent;
 		stroke: var(--blue);
-		stroke-width: 1.5rem;
-		stroke-dasharray: 4.71rem;
-		stroke-dashoffset: 4.71rem;
+		stroke-width: 1.5em;
+		stroke-dasharray: 4.71em;
+		stroke-dashoffset: var(--semicircle);
 		transform: rotate(-90deg);
 		transform-origin: center;
-		animation: progress 5s linear infinite;
+		transition: stroke-dashoffset 0.2s ease-in-out;
 	}
-	.content {
+	main {
 		width: 55ch;
 	}
 	.header {
