@@ -1,7 +1,25 @@
 ---
 import Main from '@layout/Main.astro'
 ---
+<script>
+	const setup = () => {
+		window.swup.hooks.on('animation:in:start', () => { location.hash = 'title'})
+	}
+	if(window.swup) {
+		setup()
+	}
+	else {
+		document.addEventListener('swup:enable', setup)
+	}
+	const scrollContainer = document.getElementById('content')
+	scrollContainer.addEventListener('scroll', () => {
+		if(scrollContainer.offsetHeight + scrollContainer.scrollTop >= scrollContainer.scrollHeight) {
+			window.swup.navigate('/projects');
+		}
+		// Also add logic for updating the Main
+	})
+</script>
 <Main pathname={Astro.url.pathname}>
-	<h1>About</h1>
+	<h1 id="title">About</h1>
 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim ornare velit et scelerisque. Duis at aliquet turpis. Vestibulum gravida ultricies arcu a sagittis. Morbi sollicitudin non sem nec sagittis. In tempus sollicitudin nulla ultrices sagittis. Duis ac velit vitae lorem vulputate commodo ut ut metus. Nunc eget velit vitae neque eleifend viverra. Vestibulum facilisis, est non tincidunt imperdiet, felis ipsum tincidunt erat, ut condimentum felis orci at ante.</p>
 </Main>
