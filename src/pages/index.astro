@@ -1,5 +1,6 @@
 ---
 import Main from '@layout/Main.astro'
+
 ---
 <script>
 	const setup = () => {
@@ -11,21 +12,10 @@ import Main from '@layout/Main.astro'
 	else {
 		document.addEventListener('swup:enable', setup)
 	}
-	const scrollContainer = document.getElementById('content')
-	scrollContainer.addEventListener('scroll', () => {
-		if(scrollContainer.offsetHeight + scrollContainer.scrollTop >= scrollContainer.scrollHeight) {
-			window.swup.navigate('/about');
-		}
-		// Also add logic for updating the Main
-	})
 </script>
 <Main pathname={Astro.url.pathname}>
 	<h1 id="title">Home</h1>
 	<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum, est non pretium viverra, est leo dictum metus, a gravida tortor augue et eros. Phasellus turpis nulla, vestibulum non ante porttitor, bibendum lobortis mi. Duis in ullamcorper tortor. Mauris vel rutrum erat. Duis augue est, lacinia eget lorem et, tincidunt viverra elit. Fusce a vehicula libero. Vivamus in nisl eu quam efficitur dignissim. Aenean ullamcorper suscipit dictum. Nulla pellentesque laoreet ligula, vitae tincidunt tellus dignissim et. Aenean congue pellentesque orci, sit amet volutpat mauris sodales quis. Mauris lobortis libero non nisl pulvinar auctor. Maecenas vel porta tortor, sed tempus quam. Vestibulum laoreet, arcu ut iaculis aliquam, est dui scelerisque sem, nec fringilla mi quam a felis.
-
-Aliquam congue nibh eu erat pellentesque, bibendum aliquet velit blandit. Sed mollis sollicitudin vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mauris nisi, condimentum vitae congue quis, posuere id ipsum. Suspendisse ac est dignissim lacus lobortis varius id a ante. Curabitur a orci ultricies, ullamcorper tellus vel, vestibulum turpis. Nam non maximus enim, et tincidunt tellus. Morbi sit amet neque sed neque dictum rutrum in ut felis. Nullam dictum tellus sit amet lectus faucibus sollicitudin. Phasellus vitae tristique eros, quis lobortis lorem. Donec cursus erat eu felis mollis fringilla. Nam quis tellus leo. Praesent tempus est urna, sit amet venenatis nisl aliquam ac.
-
-Nulla ac commodo ligula. Morbi eros orci, feugiat vitae elit vitae, mollis ornare quam. In malesuada tellus in tincidunt interdum. Nullam at mauris est. Integer sit amet arcu sit amet tellus blandit imperdiet in et massa. Praesent placerat suscipit velit efficitur luctus. Pellentesque fringilla elit et bibendum iaculis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean at venenatis justo. Sed libero ex, auctor non volutpat pretium, pharetra ac ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
+	Hello, my name is Charles Alaras. I am an engineer looking to create interesting projects.
 	</p>
 </Main>

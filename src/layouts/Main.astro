@@ -19,7 +19,7 @@ const strokes = {
 	"/epilogue": 0.942
 };
 
-const { pathname, percentage } = Astro.props
+const { pathname } = Astro.props
 const translation = translations[pathname]
 const semicircle = String(strokes[pathname]) + "em"
 ---
@@ -45,7 +45,7 @@ const semicircle = String(strokes[pathname]) + "em"
 	<link rel="icon" href="./lighticon.ico">
 </head>
 <html lang="en">
-	<body>
+	<body id="body" data-start={strokes[pathname]}>
 		<div class="titles" id="sections">
 			<h1 class="header"><Toggle/>Charles Alaras</h1>
 				<h1 class={pathname === "/" ? "active" : "inactive"}><a href="/">Home</a></h1>
@@ -68,6 +68,22 @@ const semicircle = String(strokes[pathname]) + "em"
 		</main>
 	</body>
 </html>
+<script>
+	let percent
+	const start = document.getElementById('body').dataset.start
+	const scrollContainer = document.getElementById('content')
+	const indicator = document.getElementById('indicator')
+	scrollContainer.addEventListener('scroll', () => {
+		percent = (scrollContainer.scrollTop / (scrollContainer.scrollHeight - scrollContainer.clientHeight))
+		indicator.style.strokeDashoffset = String(start - (0.942 * percent)) + "em"
+		/*
+		if(scrollContainer.offsetHeight + scrollContainer.scrollTop >= scrollContainer.scrollHeight) {
+			window.swup.navigate('/about');
+		}
+		*/
+		// Also add logic for updating the Main
+	})
+</script>
 
 <style define:vars={{ translation, semicircle }}>
 	.ending {
