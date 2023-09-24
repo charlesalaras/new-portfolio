@@ -1,30 +1,38 @@
 ---
 import Main from '@layout/Main.astro'
+import Project from '@lib/Project.astro'
 ---
 <script>
-	const setup = () => {
-		window.swup.hooks.on('animation:in:start', () => { location.hash = 'title'})
+	const projectIcon = document.getElementById("tridiv")
+	const move = (e) => {
+		var x = e.clientX
+		var y = e.clientY
+		projectIcon.style.left = x + 10 + "px";
+		projectIcon.style.top = y + 20 + "px";
 	}
-	if(window.swup) {
-		setup()
-	}
-	else {
-		document.addEventListener('swup:enable', setup)
-	}
-	const scrollContainer = document.getElementById('content')
-	scrollContainer.addEventListener('scroll', () => {
-		if(scrollContainer.offsetHeight + scrollContainer.scrollTop >= scrollContainer.scrollHeight) {
-			window.swup.navigate('/contact');
-		}
-		// Also add logic for updating the Main
+	document.addEventListener('astro:page-load', () => { 
+		location.hash = 'title'
+		document.addEventListener('mousemove', (e) => {move(e)})
 	})
 </script>
 <Main pathname={Astro.url.pathname}>
 	<h1 id="title">Projects</h1>
 	<p>Here are a series of projects that I have created. Each project is sorted by the core discipline embodied. Simply click a project link and you will be directed to a relevant resource (video demonstration, gist, repository, image gallery).</p>
 	<h2>Programming</h2>
+	<li><a class="test" href="#">GPU Image Processing Tool</a></li>
+	<li><a href="#">Questclad</a></li>
 	<h2>Engineering</h2>
+	<li><a href="#">Friday Night Hardware</a></li>
+	<li><a href="#">Digital Audio Workstation Embedded System</a></li>
+	<li><a href="#">Birdcage Melee</a></li>
+	<li><a href="#">Art Metal TIE Fighter</a></li>
 	<h2>Video Production</h2>
+	<li><a href="#">A Tribute to Your City Gave Me Asthma - Jubilee Line</a></li>
+	<li><a href="#">How I Recreated Friday Night Funkin' in Hardware</a></li>
 	<h2>Event Production</h2>
+	<li><a href="#">Birdcage Melee</a></li>
 	<h2>Graphic Design</h2>
+	<li><a href="#">Birdcage Melee</a></li>
+	<li><a href="#">Twitch Channel Assets</a></li>
+	<Project/>
 </Main>

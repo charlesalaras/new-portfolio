@@ -2,6 +2,8 @@
 import '../../node_modules/modern-normalize/modern-normalize.css'
 import '../styles/global.css'
 import Toggle from '@lib/Toggle.astro'
+import NavButton from '@lib/NavButton.astro'
+import { ViewTransitions, slide } from 'astro:transitions'
 
 const translations = {
 	"/": "0rem",
@@ -9,6 +11,29 @@ const translations = {
 	"/projects": "8rem",
 	"/contact": "12rem",
 	"/epilogue": "16rem"
+};
+
+const nav = {
+"/": {
+"next": "/about",
+"prev": ""
+},
+"/about": {
+"next": "/projects",
+"prev": "/"
+},
+"/projects": {
+"next": "/contact",
+"prev": "/about"
+},
+"/contact": {
+"next": "/epilogue",
+"prev": "/projects"
+},
+"/epilogue": {
+"next": "",
+"prev": "/contact"
+}
 };
 
 const strokes = {
@@ -24,25 +49,28 @@ const translation = translations[pathname]
 const semicircle = String(strokes[pathname]) + "em"
 ---
 <script is:inline>
-	const theme = (() => {
-		if(typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-			return localStorage.getItem("theme");
-		}
-		if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-			return "dark";
-		}
-		return "light";
-	})();
+	document.addEventListener('astro:after-swap', () => {
+		const theme = (() => {
+			if(typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+				return localStorage.getItem("theme");
+			}
+			if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
+				return "dark";
+			}
+			return "light";
+		})();
 
-	if(theme === "light") {
-		document.documentElement.classList.remove("dark");
-	} else {
-		document.documentElement.classList.add("dark");
-	}
-	window.localStorage.setItem("theme", theme);
+		if(theme === "light") {
+			document.documentElement.classList.remove("dark");
+		} else {
+			document.documentElement.classList.add("dark");
+		}
+		window.localStorage.setItem("theme", theme);
+	});
 </script>
 <head>
 	<link rel="icon" href="./lighticon.ico">
+	<ViewTransitions />
 </head>
 <html lang="en">
 	<body id="body" data-start={strokes[pathname]}>
@@ -61,28 +89,31 @@ const semicircle = String(strokes[pathname]) + "em"
 				</svg>
 			</div>
 		</div>
-		<main id="content">
-			<div class={pathname === "/" ? "hidden space" : "space"}></div>
+		<main id="content" transition:animate="slide">
+			<div class={pathname === "/" ? "hidden space" : "space"}>
+				<NavButton path={nav[pathname]["prev"]} content="Previous"/>
+			</div>
 			<slot/>
-			<div class={pathname === "/epilogue" ? "ending space" : "space"}></div>
+			<div class={pathname === "/epilogue" ? "ending" : "space"}>
+				<NavButton path={nav[pathname]["next"]} content="Next"/>
+			</div>
 		</main>
 	</body>
 </html>
 <script>
-	let percent
-	const start = document.getElementById('body').dataset.start
-	const scrollContainer = document.getElementById('content')
-	const indicator = document.getElementById('indicator')
-	scrollContainer.addEventListener('scroll', () => {
-		percent = (scrollContainer.scrollTop / (scrollContainer.scrollHeight - scrollContainer.clientHeight))
-		indicator.style.strokeDashoffset = String(start - (0.942 * percent)) + "em"
-		/*
-		if(scrollContainer.offsetHeight + scrollContainer.scrollTop >= scrollContainer.scrollHeight) {
-			window.swup.navigate('/about');
-		}
-		*/
-		// Also add logic for updating the Main
-	})
+	const setup = () => {
+		let percent
+		const start = document.getElementById('body').dataset.start
+		const scrollContainer = document.getElementById('content')
+		const indicator = document.getElementById('indicator')
+		scrollContainer.addEventListener('scroll', () => {
+			percent = (scrollContainer.scrollTop / (scrollContainer.scrollHeight - scrollContainer.clientHeight))
+			indicator.style.strokeDashoffset = String(start - (0.942 * percent)) + "em"
+		})
+		console.log("Loaded!");
+	}
+	setup()
+	document.addEventListener('astro:after-swap', () => {setup()});
 </script>
 
 <style define:vars={{ translation, semicircle }}>
@@ -93,8 +124,10 @@ const semicircle = String(strokes[pathname]) + "em"
 		display: none;
 	}
 	.space {
-		content: "";
-		height: 24rem;
+		height: 12rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 	html {
 		display: flex;

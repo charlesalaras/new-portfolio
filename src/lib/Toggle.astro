@@ -2,7 +2,7 @@
 const { theme } = Astro.props;
 ---
 
-<button id="dark-toggle" class="dark-toggle"></button>
+<button id="dark-toggle" class="dark-toggle" transition:persist></button>
 
 <script>
 	const button = document.getElementById('dark-toggle');

@@ -3,15 +3,7 @@ import Main from '@layout/Main.astro'
 
 ---
 <script>
-	const setup = () => {
-		window.swup.hooks.on('animation:in:start', () => { location.hash = 'title'})
-	}
-	if(window.swup) {
-		setup()
-	}
-	else {
-		document.addEventListener('swup:enable', setup)
-	}
+	document.addEventListener('astro:page-load', () => { location.hash = 'title'})
 </script>
 <Main pathname={Astro.url.pathname}>
 	<h1 id="title">Home</h1>
