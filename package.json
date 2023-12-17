@@ -1,17 +1,17 @@
 {
-  "name": "astro-portfolio",
+  "name": "test",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/svelte": "^2.2.0",
-    "astro": "^2.5.7",
-    "svelte": "^3.59.1"
+    "@astrojs/check": "^0.3.1",
+    "astro": "^3.6.0",
+    "typescript": "^5.3.2"
   }
 }

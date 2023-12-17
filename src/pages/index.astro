@@ -1,9 +1,52 @@
 ---
-import MainLayout from '@layout/MainLayout.astro'
-import Home from '@lib/Home.svelte'
+import Main from '../layouts/Main.astro'
 ---
 
-<MainLayout pathname={Astro.url.pathname}>
-	<Home client:only="svelte"/>
-</MainLayout>
+<Main>
+<section id="introduction">
+<h1>Hello, I'm Charles Alaras</h1>
+<p>
+I am a programmer, engineer, video editor, event producer, and graphic designer. I value creating simplistic, efficient, and elegant solutions to problems. My goal is to produce creative and polished projects.
+</p>
+</section>
+<section id="projects">
+<h2>projects</h2>
 
+<a href="/projects">
+Click me to see more projects
+</a>
+</section>
+<section id="skills">
+<h2>skills</h2><input type="checkbox"/>Show <span>Project</span><span>Years of</span> Experience
+</section>
+<section id="experience">
+<h2>experience</h2>
+<ul>
+  <li><h3>XCITE Media Developer Assistant - University of California, Riverside</h3></li>
+</ul>
+</section>
+<section id="education">
+<h2>education</h2>
+<ul>
+  <li>
+  <h3>Master of Science in Computer Engineering - University of California, Riverside</h3>
+  </li>
+  <li>
+  <h3>Bachelor of Science in Computer Engineering - University of California, Riverside</h3>
+  </li>
+</ul>
+</section>
+<section id="contact">
+<h2>connect</h2>
+<form>
+
+</form>
+Note that JavaScript must be enabled to fill out the contact form.
+
+<ul>
+  <li><a href="https://linkedin.com/in/charles-alaras" target="_blank">Find me on LinkedIn </a></li>
+  <li><a href="https://github.com/charlesalaras" target="_blank">Find me on GitHub </a></li>
+  <li><a href="/blog">I also have a blog, if you're interested </a></li>
+</ul>
+</section>
+</Main>

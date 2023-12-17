@@ -1,0 +1,14 @@
+@import 'var.css';
+
+html {
+  background: var(--background);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+               "Helvetica Neue", sans-serif;
+}
+
+[data-theme='light'] .block-light,
+[data-theme='dark'] .block-dark {
+  display: block !important;
+}
