@@ -1,14 +1,108 @@
 @import 'var.css';
+@font-face {
+  font-family: 'Concourse C4';
+  src: url('fonts/concourse_c4_bold.woff');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Concourse T4';
+  src: url('fonts/concourse_t4_regular.woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Concourse T4';
+  src: url('fonts/concourse_t4_italic.woff');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Concourse T4';
+  src: url('fonts/concourse_t4_bold.woff');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Concourse T4';
+  src: url('fonts/concourse_t4_bold_italic.woff');
+  font-weight: bold;
+  font-style: italic;
+}
 
 html {
+  display: flex;
+  justify-content: center;
   background: var(--background);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family: 'Concourse T4', -apple-system, BlinkMacSystemFont, 'Segoe UI',
                Roboto, Oxygen-Sans, Ubuntu, Cantarell,
-               "Helvetica Neue", sans-serif;
+               'Helvetica Neue', sans-serif;
+}
+
+body {
+  width: 70ch;
+}
+
+#bg-grid {
+  box-sizing: border-box;
+  padding: 1rem;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100svw;
+  height: 100svh;
+  display: flex;
+}
+
+#bg-right {
+  background-color: var(--primary);
+  width: 100%;
+  height: 66%;
+  z-index: -1;
+}
+
+#bg-left {
+  background-color: var(--accent);
+  width: 100%;
+  height: 66%;
+  z-index: -1;
+}
+
+
+.block-light, .block-dark {
+  display: none;
 }
 
 [data-theme='light'] .block-light,
 [data-theme='dark'] .block-dark {
   display: block !important;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: inherit;
+}
+
+button {
+  background-color: var(--secondary);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-family: 'Concourse T4';
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text);
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-variant: small-caps;
+  font-family: 'Concourse C4';
+  font-size: calc(4rem / 3rem);
+  letter-spacing: 0.05rem;
 }

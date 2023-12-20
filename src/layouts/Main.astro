@@ -1,5 +1,6 @@
 ---
 import '../styles/styles.css'
+import Icon from '../components/Icon.astro'
 ---
 <script is:inline>
 
@@ -30,13 +31,19 @@ const toggleTheme = () => {
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 	</head>
+	<body>
+	<div id="bg-grid">
+		<div id="bg-left"></div>
+		<div id="bg-right"></div>
+	</div>
 	<header>
 		<button id="theme-toggle" type="button" onclick="toggleTheme()">
-			<span class="block-light">Sun</span>
-			<span class="block-dark">Moon</span>
+			<Icon className="block-light" name="moon" fill={true}/>
+			<Icon className="block-dark" name="sun" fill={true}/>
 		</button>
 	</header>
-	<body>
+	<main>
 		<slot></slot>
+	</main>
 	</body>
 </html>
