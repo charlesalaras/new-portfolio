@@ -1,14 +1,21 @@
 ---
 import Main from '../layouts/Main.astro'
 import Icon from '../components/Icon.astro'
+import { Image } from 'astro:assets'
+import portrait from '../images/portrait.png'
 ---
 
 <Main>
-<section id="introduction">
+<section id="intro">
+<article>
 <h1>Hello, I'm Charles Alaras</h1>
 <p>
 I am a programmer, engineer, video editor, event producer, writer, and graphic designer. I value creating simplistic, efficient, and elegant solutions to problems. My goal is to produce creative and polished projects.
 </p>
+</article>
+<aside id="portrait">
+<Image src={portrait} alt="Portrait of Charles Alaras" class="portrait"/>
+</aside>
 </section>
 <section id="projects">
 <h2>projects</h2>

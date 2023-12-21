@@ -1,31 +1,31 @@
 @import 'var.css';
 @font-face {
   font-family: 'Concourse C4';
-  src: url('fonts/concourse_c4_bold.woff');
+  src: url('fonts/concourse_4_caps_bold.woff2');
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
   font-family: 'Concourse T4';
-  src: url('fonts/concourse_t4_regular.woff');
+  src: url('fonts/concourse_4_regular.woff2');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Concourse T4';
-  src: url('fonts/concourse_t4_italic.woff');
+  src: url('fonts/concourse_4_italic.woff2');
   font-weight: normal;
   font-style: italic;
 }
 @font-face {
   font-family: 'Concourse T4';
-  src: url('fonts/concourse_t4_bold.woff');
+  src: url('fonts/concourse_4_bold.woff2');
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
   font-family: 'Concourse T4';
-  src: url('fonts/concourse_t4_bold_italic.woff');
+  src: url('fonts/concourse_4_bold_italic.woff2');
   font-weight: bold;
   font-style: italic;
 }
@@ -69,6 +69,25 @@ body {
   z-index: -1;
 }
 
+#intro {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#portrait {
+  width: 16rem;
+  height: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  border: solid 0.5rem var(--accent);
+}
+
+.portrait {
+  width: 100%;
+  height: auto;
+}
 
 .block-light, .block-dark {
   display: none;
@@ -103,6 +122,6 @@ h1 {
 h2 {
   font-variant: small-caps;
   font-family: 'Concourse C4';
-  font-size: calc(4rem / 3rem);
+  font-size: calc(4rem / 3);
   letter-spacing: 0.05rem;
 }
