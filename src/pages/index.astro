@@ -1,13 +1,14 @@
 ---
 import Main from '../layouts/Main.astro'
 import Icon from '../components/Icon.astro'
+import Project from '../components/Project.astro'
 import { Image } from 'astro:assets'
 import portrait from '../images/portrait.png'
 ---
 
 <Main>
 <section id="intro">
-<article>
+<article id="bio">
 <h1>Hello, I'm Charles Alaras</h1>
 <p>
 I am a programmer, engineer, video editor, event producer, writer, and graphic designer. I value creating simplistic, efficient, and elegant solutions to problems. My goal is to produce creative and polished projects.
@@ -20,11 +21,23 @@ I am a programmer, engineer, video editor, event producer, writer, and graphic d
 <section id="projects">
 <h2>projects</h2>
 <ul>
-<li></li>
-<li></li>
+<li><Project 
+projectType="code"
+title="Project 1"
+date="19 December 1995"
+link="#"
+bio="Project description"
+/></li>
+<li><Project 
+projectType="code"
+title="Project 1"
+date="19 December 1995"
+link="#"
+bio="Project description"
+/></li>
 </ul>
-<a href="/projects">
-Click me to see more projects <Icon name="external-link" />
+<a class="link" href="/projects">
+See more projects<Icon name="external-link" />
 </a>
 </section>
 <section id="skills">

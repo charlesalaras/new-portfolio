@@ -76,17 +76,29 @@ body {
   align-items: center;
 }
 
+#bio {
+  width: 70%;
+}
+
 #portrait {
-  width: 16rem;
-  height: auto;
+  border: 0.25rem solid var(--accent);
   border-radius: 50%;
-  overflow: hidden;
-  border: solid 0.5rem var(--accent);
+  width: 10rem;
+  height: 10rem;
+  overflow: clip;
 }
 
 .portrait {
-  width: 100%;
+  box-sizing: border-box;
+  width: 10rem;
   height: auto;
+  border: 0.25rem solid rgba(0, 0, 0, 0);
+  border-radius: 50%;
+}
+
+#projects ul {
+  list-style: none;
+  padding-left: 0;
 }
 
 .block-light, .block-dark {
@@ -102,6 +114,13 @@ a {
   text-decoration: none;
   font-weight: bold;
   color: inherit;
+}
+
+.link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5ch;
 }
 
 button {
