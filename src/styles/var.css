@@ -1,5 +1,6 @@
 :root[data-theme="light"] {
   --text: #08172b;
+  --text-rgb: 8, 23, 43;
   --background: #f7f9ff;
   --primary: #0048bd;
   --secondary: #d0e0f6;
@@ -7,6 +8,7 @@
 }
 :root[data-theme="dark"] {
   --text: #ecf4fe;
+  --text-rgb: 236, 244, 254;
   --background: #070c12;
   --primary: #0048bd;
   --secondary: #0c192c;
