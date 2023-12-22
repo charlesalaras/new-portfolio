@@ -81,19 +81,47 @@ body {
 }
 
 #portrait {
-  border: 0.25rem solid var(--accent);
-  border-radius: 50%;
+  position: relative;
   width: 10rem;
   height: 10rem;
   overflow: clip;
 }
 
+#portrait svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  stroke: var(--accent);
+  stroke-dasharray: 1 0;
+  stroke-dashoffset: 0;
+  transition: 
+    stroke-dasharray 0.5s linear,
+    stroke-dashoffset 0.5s linear;
+}
+
+#portrait svg:hover {
+  stroke-dasharray: 0.2 0.3;
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    stroke-dashoffset: 0;
+  } to {
+    stroke-dashoffset: 1;
+  }
+}
+
 .portrait {
+  position: absolute;
+  top: 0;
+  left: 0;
   box-sizing: border-box;
   width: 10rem;
   height: auto;
-  border: 0.25rem solid rgba(0, 0, 0, 0);
+  border: 0.6rem solid rgba(0, 0, 0, 0);
   border-radius: 50%;
+  z-index: -1;
 }
 
 #projects ul {
