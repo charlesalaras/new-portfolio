@@ -44,48 +44,6 @@ body {
   width: 70ch;
 }
 
-.bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100svw;
-  height: 100svh;
-  box-sizing: border-box;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  z-index: -2;
-  transition: opacity 1s;
-}
-
-@media only screen and (max-width: 1100px) {
-  .bg {
-    opacity: 0.25;
-  }
-} 
-
-.bg-item {
-  display: flex;
-  flex-direction: row;
-  overflow: visible;
-  height: 50%;
-  filter: blur(64px);
-}
-
-.bg-item svg {
-  width: auto;
-  height: calc(200svh / 3);
-}
-
-.bg-r {
-  justify-content: flex-end;
-}
-
-.bg-l {
-  justify-content: flex-start;
-  align-items: flex-end;
-}
-
 #intro {
   display: flex;
   flex-direction: row;
