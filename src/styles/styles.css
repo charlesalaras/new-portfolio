@@ -129,6 +129,20 @@ body {
   padding-left: 0;
 }
 
+#skills ul {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#contact ul {
+  list-style-type: none;
+  padding-left: 1rem;
+}
+
 .block-light, .block-dark {
   display: none;
 }

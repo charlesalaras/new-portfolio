@@ -13,7 +13,7 @@ const {
 <summary>
 <span>
 <Icon name={`${projectType}`}/>
-<strong>{title}</strong> | 
+<h3>{title}</h3> | 
 <span>{date}</span>
 </span>
 <span class="expand">
@@ -27,6 +27,10 @@ const {
 </article>
 
 <style>
+h3 {
+  margin: 0;
+  font-size: 1rem;
+}
 .project {
   background-color: var(--secondary);
   border-radius: 0.5rem;
