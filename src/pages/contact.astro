@@ -1,0 +1,45 @@
+---
+import '../styles/contact.css'
+import Main from '../layouts/Main.astro'
+import Icon from '../components/Icon.astro'
+---
+<Main>
+<h1>Contact Form</h1>
+<form>
+<label for="name"><h2>name<span class="required">*</span></h2></label>
+<input type="text" id="name" placeholder="Name" required>
+
+<label for="company"><h2>company</h2></label>
+<input type="text" id="company" placeholder="Company">
+
+<label for="email"><h2>email<span class="required">*</span></h2></label>
+<input type="text" id="email" placeholder="Email" required>
+
+
+<label for="subject"><h2>subject<span class="required">*</span></h2></label>
+<fieldset>
+<div class="option">
+<input type="radio" id="programming" required/><label for="programming"><Icon name="code"/>Programming</label>
+</div>
+<div class="option">
+<input type="radio" id="programming" required/><label for="programming"><Icon name="tool"/>Engineering</label>
+</div>
+<div class="option">
+<input type="radio" id="programming" required/><label for="programming"><Icon name="film"/>Video Editing</label>
+</div>
+<div class="option">
+<input type="radio" id="programming" required/><label for="programming"><Icon name="calendar"/>Event Production</label>
+</div>
+<div class="option">
+<input type="radio" id="programming" required/><label for="programming"><Icon name="edit-3"/>Writing</label>
+</div>
+<div class="option">
+<input type="radio" id="programming" required/><label for="programming"><Icon name="pen-tool"/>Graphic Design</label>
+</div>
+</fieldset>
+
+<label for="message"><h2>message<span class="required">*</span></h2></label>
+<textarea id="name" placeholder="Body" required></textarea>
+<button type="submit" value="Submit"><Icon name="send"/>Submit</button>
+</form>
+</Main>
