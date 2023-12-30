@@ -1,0 +1,22 @@
+---
+import Icon from './Icon.astro'
+const { content } = Astro.props
+---
+
+<span>
+<Icon name="tag"/>
+{content}
+</span>
+
+<style>
+span {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5ch;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  background: var(--background);
+}
+</style>

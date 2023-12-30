@@ -6,12 +6,15 @@ import Skill from '../components/Skill.astro'
 import { Image } from 'astro:assets'
 import portrait from '../assets/portrait.png'
 import '../styles/index.css'
+import { getCollection } from 'astro:content'
+
+const projects = await getCollection('projects')
 ---
 
 <Main>
 <section id="intro">
 <article id="bio">
-<h1>Hello, I'm Charles Alaras 👋</h1>
+<h1>Hello, I'm Charles Alaras <span role="img" aria-label="waving hand">👋</span></h1>
 <p>
 I am a programmer, engineer, video editor, event producer, writer, and graphic designer. I value creating simplistic, efficient, and elegant solutions to problems. My goal is to produce creative and polished projects.
 </p>
@@ -26,41 +29,19 @@ I am a programmer, engineer, video editor, event producer, writer, and graphic d
 <section id="projects">
 <h2>projects</h2>
 <ul role="list">
-<li><Project 
-projectType="code"
-title="Portfolio Website"
-date="1/1/2024"
-link="/projects/portfolio"
-bio="Project description"
-/></li>
-<li><Project 
-projectType="code"
-title="Analyzing and Predicting Pet Adoption Speed"
-date="15/12/2023"
-link="#/projects/pet-adoption-speed"
-bio="Project description"
-/></li>
-<li><Project 
-projectType="calendar"
-title="Birdcage Melee"
-date="6/6/2023"
-link="/projects/birdcage-melee"
-bio="Project description"
-/></li>
-<li><Project 
-projectType="cpu"
-title="Laser Tag"
-date="24/3/2023"
-link="/projects/laser-tag"
-bio="Project description"
-/></li>
-<li><Project 
-projectType="code"
-title="GPU-Accelerated Image Processing Tool"
-date="10/6/2022"
-link="/projects/gpu-image-processing"
-bio="Project description"
-/></li>
+{projects
+  .sort(function(a, b){ return b.data.date - a.data.date })
+  .slice(0, 5)
+  .map(p => (
+    <li><Project
+      projectType={p.data.type}
+      title={p.data.title}
+      date={p.data.date}
+      link={p.slug}
+      bio={p.data.description}
+      tags={p.data.tags}
+    /></li>
+  ))}
 </ul>
 <a class="link" href="/projects">
 See more projects<Icon name="external-link" />

@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content'
+import Main from '../../layouts/Main.astro'
+import Project from '../../components/Project.astro'
+
+const allProjects = await getCollection('projects')
+// fixme: add a search func
+let filter = {
+  types: [],
+  query: "",
+}
+---
+
+<Main>
+<input type="text"/>
+<ul>
+{allProjects.map(p => (
+    <li><Project
+      projectType={p.data.type}
+      title={p.data.title}
+      date={p.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+      link={p.slug}
+      bio={p.description}
+      tags={p.data.tags}
+    /></li>
+))}
+</ul>
+</Main>

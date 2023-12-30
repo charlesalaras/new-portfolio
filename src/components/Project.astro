@@ -1,11 +1,13 @@
 ---
 import Icon from './Icon.astro'
+import Tag from './Tag.astro'
 const {
   projectType,
   title,
   date,
   link,
-  bio
+  bio,
+  tags = []
 } = Astro.props
 ---
 <article class="project">
@@ -14,7 +16,7 @@ const {
 <span>
 <Icon name={`${projectType}`}/>
 <h3>{title}</h3> | 
-<span>{date}</span>
+<time>{date}</time>
 </span>
 <span class="expand">
 <em>Click to expand</em>
@@ -22,6 +24,11 @@ const {
 </span>
 </summary>
 <p>{bio}</p>
+<ul>
+{tags.map(t => (
+<li><Tag content={t}/></li>
+))}
+</ul>
 <a class="link" href={link} target="_blank">Learn more<Icon name="external-link"/></a>
 </details>
 </article>
@@ -50,5 +57,20 @@ span {
   flex-direction: row;
   align-items: center;
   gap: 1ch;
+}
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 1rem 0;
+  gap: 1ch;
+}
+li {
+  padding: 0;
+}
+p {
+  padding: 0 0.25rem;
 }
 </style>
