@@ -1,25 +1,18 @@
 ---
 import { getCollection } from 'astro:content'
 import Main from '../../layouts/Main.astro'
+import Icon from '../../components/Icon.astro'
 import '../../styles/blog.css'
 
-const allProjects = await getCollection('blog')
+const allBlogPosts = await getCollection('blog')
 // fixme: add search function
-let filter = ""
 ---
 
 <Main>
-<input type="text"/>
+<h1>Blog Posts</h1>
 <ul>
-{allProjects.map(p => (
-    <li><Project
-      projectType={p.data.type}
-      title={p.data.title}
-      date={p.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
-      link={p.slug}
-      bio={p.description}
-      tags={p.data.tags}
-    /></li>
+{allBlogPosts.map(p => (
+    <li></li>
 ))}
 </ul>
 </Main>

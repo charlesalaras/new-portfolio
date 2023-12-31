@@ -1,0 +1,19 @@
+input[type=text] {
+  font-family: "Concourse T4";
+  font-size: 1rem;
+  color: var(--text);
+  background-color: var(--secondary);
+  border: none;
+  padding: 0.5rem 1ch;
+  border-radius: 1rem;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}

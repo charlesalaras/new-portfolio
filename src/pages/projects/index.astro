@@ -2,25 +2,24 @@
 import { getCollection } from 'astro:content'
 import Main from '../../layouts/Main.astro'
 import Project from '../../components/Project.astro'
+import '../../styles/projects.css'
 
 const allProjects = await getCollection('projects')
 // fixme: add a search func
-let filter = {
-  types: [],
-  query: "",
-}
 ---
 
 <Main>
-<input type="text"/>
+<h1>Projects</h1>
 <ul>
-{allProjects.map(p => (
+{allProjects
+  .sort(function(a, b){ return b.data.date - a.data.date })
+  .map(p => (
     <li><Project
       projectType={p.data.type}
       title={p.data.title}
-      date={p.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+      date={p.data.date}
       link={p.slug}
-      bio={p.description}
+      bio={p.data.description}
       tags={p.data.tags}
     /></li>
 ))}

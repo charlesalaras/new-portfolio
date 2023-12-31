@@ -1,0 +1,35 @@
+---
+import Icon from './Icon.astro'
+import Tag from './Tag.astro'
+const {
+  image,
+  imageAlt,
+  title,
+  byline,
+  tags,
+  link,
+  item = "post"
+} = Astro.props
+---
+<section>
+<figure>
+</figure>
+<article>
+<h1>{title}</h1>
+<h2>{byline}</h2>
+{tags.map(t => (
+  <Tag content={t}/>
+))}
+<a href={link}>Go to {item}<Icon name="external-link"/></a>
+</article>
+</section>
+
+<style>
+article {
+  flex: 0 0 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+</style>

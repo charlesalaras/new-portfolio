@@ -16,7 +16,7 @@ const {
 <span>
 <Icon name={`${projectType}`}/>
 <h3>{title}</h3> | 
-<time>{date}</time>
+<time>{date.getDate()}-{date.getMonth() + 1}-{date.getFullYear()}</time>
 </span>
 <span class="expand">
 <em>Click to expand</em>
@@ -29,7 +29,7 @@ const {
 <li><Tag content={t}/></li>
 ))}
 </ul>
-<a class="link" href={link} target="_blank">Learn more<Icon name="external-link"/></a>
+<a class="link" href={`/projects/${link}`} target="_blank">Learn more<Icon name="external-link"/></a>
 </details>
 </article>
 

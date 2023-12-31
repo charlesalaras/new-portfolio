@@ -3,15 +3,19 @@
 :root[data-theme="light"] {
   --text: #08172b;
   --background: #f7f9ff;
+  --lines: 0, 0, 0
 }
 
 :root[data-theme="dark"] {
   --text: #ecf4fe;
   --background: #070c12;
+  --lines: 255, 255, 255
 }
 
 html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
 }
 
 body {
@@ -40,7 +44,7 @@ h1 {
   margin: 0;
   background: repeating-linear-gradient(
     -1deg, 
-    rgba(255, 255, 255, 0.5), 
+    rgba(var(--lines), 0.5), 
     rgba(125, 125, 125, 0.5) 6px
     ) 0 0 / 400% 100%;
   animation: gradient 10s linear infinite;
