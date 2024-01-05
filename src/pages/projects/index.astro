@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content'
 import Main from '../../layouts/Main.astro'
-import Project from '../../components/Project.astro'
+import Card from '../../components/Card.astro'
 import '../../styles/projects.css'
 
 const allProjects = await getCollection('projects')
@@ -14,13 +14,16 @@ const allProjects = await getCollection('projects')
 {allProjects
   .sort(function(a, b){ return b.data.date - a.data.date })
   .map(p => (
-    <li><Project
-      projectType={p.data.type}
+    <li><Card
+      image={p.data.image}
+      imageAlt={p.data.imageAlt}
       title={p.data.title}
+      icon={p.data.type}
       date={p.data.date}
-      link={p.slug}
-      bio={p.data.description}
+      byline={p.data.description}
       tags={p.data.tags}
+      link={p.slug}
+      item="project"
     /></li>
 ))}
 </ul>

@@ -1,6 +1,16 @@
 ul {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1rem;
+}
+
+li {
+  flex: 1 0 45%;
 }
 
 input[type=text] {
