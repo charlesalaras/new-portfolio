@@ -1,10 +1,7 @@
 ---
-import Image from 'astro:assets'
 import Icon from './Icon.astro'
 import Tag from './Tag.astro'
 const {
-  image = null,
-  imageAlt,
   title,
   icon = null,
   date,
@@ -14,9 +11,11 @@ const {
   item = "post"
 } = Astro.props
 ---
-<section>
-{image && <Image src={image} alt={imageAlt}/>}
 <article>
+<figure>
+<slot/>
+</figure>
+<section>
 <h1>{title}</h1>
 <h2>{date.getDate()}-{date.getMonth() + 1}-{date.getFullYear()}</h2>
 <p>{byline}</p>
@@ -25,13 +24,15 @@ const {
   <Tag content={t}/>
 ))}
 </aside>
+<footer>
 <a class="link" href={`/projects/${link}`}>Go to {item}<Icon name="external-link"/></a>
-</article>
-<footer>{icon && <Icon name={icon}/>}</footer>
+{icon && <Icon name={icon}/>}
+</footer>
 </section>
+</article>
 
 <style>
-section {
+article {
   width: 100%;
   height: 100%;
   display: flex;
@@ -40,19 +41,22 @@ section {
   overflow: clip;
   background-color: var(--secondary);
   border-radius: 0.8rem;
-  padding: 1rem;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
-article {
+section {
+  box-sizing: border-box;
+  height: 50%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding: 1rem;
 }
 footer {
+  margin-top: auto;
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 h1, h2, p {
   margin: 0;
@@ -68,5 +72,10 @@ aside {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1ch;
+}
+figure {
+  margin: 0;
+  width: 100%;
+  height: 50%;
 }
 </style>
