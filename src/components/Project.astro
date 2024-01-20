@@ -1,0 +1,76 @@
+---
+import Icon from './Icon.astro'
+import Tag from './Tag.astro'
+const {
+  projectType,
+  title,
+  date,
+  link,
+  bio,
+  tags = []
+} = Astro.props
+---
+<article class="project">
+<details>
+<summary>
+<span>
+<Icon name={`${projectType}`}/>
+<h3>{title}</h3> | 
+<time>{date.getDate()}-{date.getMonth() + 1}-{date.getFullYear()}</time>
+</span>
+<span class="expand">
+<em>Click to expand</em>
+<Icon name="corner-right-down"/>
+</span>
+</summary>
+<p>{bio}</p>
+<ul>
+{tags.map(t => (
+<li><Tag content={t}/></li>
+))}
+</ul>
+<a class="link" href={`/projects/${link}`} target="_blank">Learn more<Icon name="external-link"/></a>
+</details>
+</article>
+
+<style>
+h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+.project {
+  background-color: var(--secondary);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+.project summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.expand {
+  color: rgba(var(--text-rgb), 0.5);
+}
+span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1ch;
+}
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 1rem 0;
+  gap: 1ch;
+}
+li {
+  padding: 0;
+}
+p {
+  padding: 0 0.25rem;
+}
+</style>

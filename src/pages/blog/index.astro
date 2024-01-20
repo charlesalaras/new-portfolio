@@ -1,45 +1,18 @@
 ---
-import BlogLayout from '@layout/BlogLayout.astro'
-import BlogPost from '@lib/BlogPost.svelte'
-
 import { getCollection } from 'astro:content'
+import Main from '../../layouts/Main.astro'
+import Icon from '../../components/Icon.astro'
+import '../../styles/blog.css'
 
-const allPosts = await getCollection('blog')
-
+const allBlogPosts = await getCollection('blog')
+// fixme: add search function
 ---
 
-<BlogLayout>
-	<div class="section latest">
-	<p>Latest Blog Post</p>
-	<hr/>
-	</div>
-	<div class="section search">
-	<p>Search for Post</p>
-	<hr/>
-	</div>
-	<div class="section filters">
-	<p>Filters</p>
-	<hr/>
-	</div>
-	<div class="section listings">
-	<p>Results</p>
-	<hr/>
-	</div>
-	{
-	allPosts.map((post) => (
-	<BlogPost postTitle={post.data.title} byline={post.data.byline} date={post.data.date} tags={post.data.tags}/>
-	))
-	}
-</BlogLayout>
-
-<style>
-	.section {
-		width: 100%;
-		display: flex;
-		align-items: center;
-	}
-	.section hr {
-		flex-grow: 1;
-		margin-left: 0.5rem;
-	}
-</style>
+<Main>
+<h1>Blog Posts</h1>
+<ul>
+{allBlogPosts.map(p => (
+    <li></li>
+))}
+</ul>
+</Main>

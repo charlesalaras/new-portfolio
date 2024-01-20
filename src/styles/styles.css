@@ -1,0 +1,100 @@
+@import 'var.css';
+@import 'modern-normalize.css';
+
+@font-face {
+  font-family: 'Concourse C4';
+  src: url('fonts/concourse_4_caps_bold.woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Concourse T4';
+  src: url('fonts/concourse_4_regular.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Concourse T4';
+  src: url('fonts/concourse_4_italic.woff2');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Concourse T4';
+  src: url('fonts/concourse_4_bold.woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Concourse T4';
+  src: url('fonts/concourse_4_bold_italic.woff2');
+  font-weight: bold;
+  font-style: italic;
+}
+
+html {
+  display: flex;
+  justify-content: center;
+  background: var(--background);
+  color: var(--text);
+  font-family: 'Concourse T4', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+               Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+               'Helvetica Neue', sans-serif;
+}
+
+body {
+  padding: 1rem 0;
+  width: 70ch;
+}
+
+.block-light, .block-dark {
+  display: none;
+}
+
+[data-theme='light'] .block-light,
+[data-theme='dark'] .block-dark {
+  display: block !important;
+}
+
+a {
+  width: fit-content;
+  text-decoration: none;
+  font-weight: bold;
+  color: inherit;
+}
+
+.link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5ch;
+}
+
+button {
+  background-color: var(--secondary);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-family: 'Concourse T4';
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text);
+}
+
+h1 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: calc(4rem / 3);
+}
+
+h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-variant: small-caps;
+  font-family: 'Concourse C4';
+  font-size: calc(4rem / 3);
+  letter-spacing: 0.05rem;
+}
+button[type="submit"] {
+  padding: 1rem;
+}

@@ -1,0 +1,47 @@
+---
+import '../styles/styles.css'
+import Background from '../components/Background.astro'
+import Icon from '../components/Icon.astro'
+---
+<script is:inline>
+
+var storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+if (storedTheme)
+    document.documentElement.setAttribute('data-theme', storedTheme)
+
+
+const toggleTheme = () => {
+    var currentTheme = document.documentElement.getAttribute("data-theme");
+    var targetTheme = "light";
+
+    if (currentTheme === "light") {
+        targetTheme = "dark";
+    }
+
+    document.documentElement.setAttribute('data-theme', targetTheme)
+    localStorage.setItem('theme', targetTheme);
+};
+
+
+</script>
+<html lang="en" data-theme="light">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+	<Background/>
+	<header>
+			<button id="theme-toggle" type="button" onclick="toggleTheme()">
+			<Icon className="block-light" name="moon" fill={true}/>
+			<Icon className="block-dark" name="sun" fill={true}/>
+		</button>
+	</header>
+	<main>
+		<slot></slot>
+	</main>
+	</body>
+</html>

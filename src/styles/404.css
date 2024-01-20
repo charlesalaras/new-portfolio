@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap');
+
+:root[data-theme="light"] {
+  --text: #08172b;
+  --background: #f7f9ff;
+  --lines: 0, 0, 0
+}
+
+:root[data-theme="dark"] {
+  --text: #ecf4fe;
+  --background: #070c12;
+  --lines: 255, 255, 255
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100svw;
+  height: 100svh;
+  text-align: center;
+  margin: 0;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  user-select: none;
+  perspective: 800px;
+  font-family: 'Rammetto One';
+  letter-spacing: 5svw;
+  font-size: clamp(1rem, 20svw, 100svw);
+  font-weight: bold;
+  margin: 0;
+  background: repeating-linear-gradient(
+    -1deg, 
+    rgba(var(--lines), 0.5), 
+    rgba(125, 125, 125, 0.5) 6px
+    ) 0 0 / 400% 100%;
+  animation: gradient 10s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(-4px 0px 2px rgba(0, 255, 255, 1)) drop-shadow(4px 0px 2px rgba(255, 0, 75, 1));
+}
+
+span {
+  display: inline-block;
+  transform-style: preserve-3d;
+}
+
+span:nth-child(1) { animation: rotate 120s linear -66s infinite alternate; }
+span:nth-child(2) { animation: rotate 120s linear -30s infinite alternate; }
+span:nth-child(3) { animation: rotate 120s linear infinite alternate; }
+
+@keyframes rotate {
+  10% {
+    transform: rotateX(-27deg) rotateY(11deg);
+  } 20% {
+    transform: rotateX(45deg) rotateY(-50deg);   
+  } 30% {
+    transform: rotateX(-51deg) rotateY(39deg);     
+  } 40% {
+    transform: rotateX(46deg) rotateY(-45deg);     
+  } 50% {
+    transform: rotateX(-40deg) rotateY(44deg);     
+  } 60% {
+    transform: rotateX(25deg) rotateY(-22deg);     
+  } 70% {
+    transform: rotateX(-32deg) rotateY(10deg);     
+  } 80% {
+    transform: rotateX(19deg) rotateY(-46deg);     
+  } 90% {
+    transform: rotateX(-33deg) rotateY(49deg);     
+  } 100% {
+    transform: rotateX(48deg) rotateY(-33deg);     
+  }
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 0%;
+	}
+	100% {
+		background-position: 400% 0%;
+	}
+}

@@ -1,13 +1,31 @@
 ---
-import MainLayout from '@layout/MainLayout.astro'
-import Projects from '@lib/Projects.svelte'
-
 import { getCollection } from 'astro:content'
+import { Image } from 'astro:assets'
+import Main from '../../layouts/Main.astro'
+import Card from '../../components/Card.astro'
+import '../../styles/projects.css'
 
-const allProjects = await getCollection('project')
-
+const allProjects = await getCollection('projects')
+// fixme: add a search func
 ---
-<MainLayout pathname={Astro.url.pathname}>
-	<Projects client:only="svelte" projects={allProjects.map(entry => entry.data)}/>
-</MainLayout>
 
+<Main>
+<h1>Projects</h1>
+<ul>
+{allProjects
+  .sort(function(a, b){ return b.data.date - a.data.date })
+  .map(p => (
+    <li><Card
+      title={p.data.title}
+      icon={p.data.type}
+      date={p.data.date}
+      byline={p.data.description}
+      tags={p.data.tags}
+      link={p.slug}
+      item="project"
+    >
+    {p.data.header && <Image src={p.data.header} alt={p.data.headerAlt}/>}
+    </Card></li>
+))}
+</ul>
+</Main>

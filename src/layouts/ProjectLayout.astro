@@ -1,0 +1,8 @@
+---
+const { frontmatter } = Astro.props
+import Main from './Main.astro'
+---
+<Main>
+<h1>{frontmatter.title}</h1>
+<slot/>
+</Main>

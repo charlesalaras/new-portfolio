@@ -1,4 +1,26 @@
-<div>
-	I searched the entire multiverse. That page doesn't exist.
-</div>
-<button onclick="history.back()">Return to your home dimension.</button>
+---
+import '../styles/404.css'
+---
+
+<script is:inline>
+
+var storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+if (storedTheme)
+    document.documentElement.setAttribute('data-theme', storedTheme)
+
+</script>
+
+<html lang="en" data-theme="light">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+  </head>
+<body>
+<h1><span>4</span><span>0</span><span>4</span></h1>
+<p>The page you're looking for is elsewhere in the multiverse.</p>
+<a href="/">Click here to return to your home dimension.</a>
+</body>
+</html>

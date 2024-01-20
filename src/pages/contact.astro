@@ -1,45 +1,75 @@
 ---
-import MainLayout from '@layout/MainLayout.astro'
-import Form from '@lib/Form.svelte'
-import AsciiArt from '@lib/AsciiArt.svelte'
+export const prerender = false
+
+import '../styles/contact.css'
+import Main from '../layouts/Main.astro'
+import Icon from '../components/Icon.astro'
+import { isValidEmail, sendMessage } from '../../utils/formUtils'
+
+const errors = { name: "", email: ""}
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData()
+    const name = data.get("name")
+    const body = data.get("body")
+    const email = data.get("email")
+    if (typeof name !== "string" || name.length < 1) {
+      errors.name += "Please enter a valid name."
+    }
+    if (typeof email !== "string" || !isValidEmail(email)) {
+      errors.email += "Email is not valid."
+    }
+    if (typeof body !== "string" || body.length < 1) {
+      errors.name += "Please enter a message body."
+    }
+    const hasErrors = Object.values(errors).some(msg => msg)
+    if(!hasErrors) {
+      await sendMessage({name, email, body})
+      return Astro.redirect("/")
+    }
+  } catch (error) {
+    console.error(error.message)
+  }
+}
 ---
-<MainLayout pathname={Astro.url.pathname}>
-<div class="container">
-	<div class="form">
-		<Form/>
-	</div>
-	<div class="ascii">
-		<AsciiArt/>
-	</div>
+<Main>
+<h1>Contact Form</h1>
+<form method="POST">
+<label for="name"><h2>name<span class="required">*</span></h2></label>
+<input type="text" id="name" placeholder="Name" required minlength="1">
+{errors.name && <p>{errors.name}</p>}
+
+<label for="company"><h2>company</h2></label>
+<input type="text" id="company" placeholder="Company">
+
+<label for="email"><h2>email<span class="required">*</span></h2></label>
+<input type="text" id="email" placeholder="Email" required>
+{errors.email && <p>{errors.email}</p>}
+
+<label for="subject"><h2>subject<span class="required">*</span></h2></label>
+<fieldset>
+<div class="option">
+<input type="radio" id="programming" required/><label for="programming"><Icon name="code"/>Programming</label>
 </div>
-</MainLayout>
+<div class="option">
+<input type="radio" id="programming" required/><label for="programming"><Icon name="tool"/>Engineering</label>
+</div>
+<div class="option">
+<input type="radio" id="programming" required/><label for="programming"><Icon name="film"/>Video Editing</label>
+</div>
+<div class="option">
+<input type="radio" id="programming" required/><label for="programming"><Icon name="calendar"/>Event Production</label>
+</div>
+<div class="option">
+<input type="radio" id="programming" required/><label for="programming"><Icon name="edit-3"/>Writing</label>
+</div>
+<div class="option">
+<input type="radio" id="programming" required/><label for="programming"><Icon name="pen-tool"/>Graphic Design</label>
+</div>
+</fieldset>
 
-<style>
-.container { 
-  width: 100vw;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 100%;
-  grid-auto-columns: 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "form ascii";
-}
-
-.form {
-  width: 80%;
-  height: 80%;
-  justify-self: center;
-  align-self: center;
-  grid-area: form;
-}
-.ascii {
-  width: 80%;
-  height: 80%;
-  justify-self: center;
-  align-self: center;
-  grid-area: ascii;
-}
-</style>
+<label for="message"><h2>message<span class="required">*</span></h2></label>
+<textarea id="name" placeholder="Body" required minlength="1"></textarea>
+<button type="submit" value="Submit"><Icon name="send"/>Submit</button>
+</form>
+</Main>
