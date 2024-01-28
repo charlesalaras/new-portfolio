@@ -94,3 +94,9 @@
   padding-bottom: 4rem;
 }
 
+h2 {
+  font-variant: small-caps;
+  font-family: 'Concourse C4';
+  letter-spacing: 0.05rem;
+  font-size: calc(4rem / 3);
+}

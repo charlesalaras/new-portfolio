@@ -1,7 +1,8 @@
 ---
 import { getCollection } from 'astro:content'
+import { Image } from 'astro:assets'
 import Main from '../../layouts/Main.astro'
-import Icon from '../../components/Icon.astro'
+import Card from '../../components/Card.astro'
 import '../../styles/blog.css'
 
 const allBlogPosts = await getCollection('blog')
@@ -10,9 +11,19 @@ const allBlogPosts = await getCollection('blog')
 
 <Main>
 <h1>Blog Posts</h1>
-<ul>
-{allBlogPosts.map(p => (
-    <li></li>
-))}
+<ul id="posts">
+{allBlogPosts
+    .sort(function(a, b){ return b.data.date - a.data.date })
+    .map(p => (
+        <li><Card
+          title={p.data.title}
+          date={p.data.publishDate}
+          byline={p.data.byline}
+          tags={p.data.tags}
+          link={p.slug}
+        >
+        {p.data.header && <Image src={p.data.header} alt={p.data.headerAlt}/>}
+        </Card></li>
+    ))}
 </ul>
 </Main>

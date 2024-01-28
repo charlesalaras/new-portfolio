@@ -1,75 +1,25 @@
 ---
-export const prerender = false
+import '../styles/styles.css'
 
-import '../styles/contact.css'
-import Main from '../layouts/Main.astro'
-import Icon from '../components/Icon.astro'
-import { isValidEmail, sendMessage } from '../../utils/formUtils'
-
-const errors = { name: "", email: ""}
-if (Astro.request.method === "POST") {
-  try {
-    const data = await Astro.request.formData()
-    const name = data.get("name")
-    const body = data.get("body")
-    const email = data.get("email")
-    if (typeof name !== "string" || name.length < 1) {
-      errors.name += "Please enter a valid name."
-    }
-    if (typeof email !== "string" || !isValidEmail(email)) {
-      errors.email += "Email is not valid."
-    }
-    if (typeof body !== "string" || body.length < 1) {
-      errors.name += "Please enter a message body."
-    }
-    const hasErrors = Object.values(errors).some(msg => msg)
-    if(!hasErrors) {
-      await sendMessage({name, email, body})
-      return Astro.redirect("/")
-    }
-  } catch (error) {
-    console.error(error.message)
-  }
-}
+const link = import.meta.env.PUBLIC_FORM
 ---
-<Main>
-<h1>Contact Form</h1>
-<form method="POST">
-<label for="name"><h2>name<span class="required">*</span></h2></label>
-<input type="text" id="name" placeholder="Name" required minlength="1">
-{errors.name && <p>{errors.name}</p>}
 
-<label for="company"><h2>company</h2></label>
-<input type="text" id="company" placeholder="Company">
+<html>
+<meta http-equiv="refresh" content={`3;url=${link}`}/>
+<body>
+<h1>Redirecting...</h1>
+<strong><a href={`${link}`}>Click here if you are not redirected automatically.</a></strong>
+</body>
+</html>
 
-<label for="email"><h2>email<span class="required">*</span></h2></label>
-<input type="text" id="email" placeholder="Email" required>
-{errors.email && <p>{errors.email}</p>}
-
-<label for="subject"><h2>subject<span class="required">*</span></h2></label>
-<fieldset>
-<div class="option">
-<input type="radio" id="programming" required/><label for="programming"><Icon name="code"/>Programming</label>
-</div>
-<div class="option">
-<input type="radio" id="programming" required/><label for="programming"><Icon name="tool"/>Engineering</label>
-</div>
-<div class="option">
-<input type="radio" id="programming" required/><label for="programming"><Icon name="film"/>Video Editing</label>
-</div>
-<div class="option">
-<input type="radio" id="programming" required/><label for="programming"><Icon name="calendar"/>Event Production</label>
-</div>
-<div class="option">
-<input type="radio" id="programming" required/><label for="programming"><Icon name="edit-3"/>Writing</label>
-</div>
-<div class="option">
-<input type="radio" id="programming" required/><label for="programming"><Icon name="pen-tool"/>Graphic Design</label>
-</div>
-</fieldset>
-
-<label for="message"><h2>message<span class="required">*</span></h2></label>
-<textarea id="name" placeholder="Body" required minlength="1"></textarea>
-<button type="submit" value="Submit"><Icon name="send"/>Submit</button>
-</form>
-</Main>
+<style>
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+a {
+  color: #146eeb;
+}
+</style>
