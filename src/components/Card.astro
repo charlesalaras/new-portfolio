@@ -10,6 +10,8 @@ const {
   link,
   item = "post"
 } = Astro.props
+
+const slug = item === "post" ? "/blog/" : "/projects/"
 ---
 <article>
 <figure>
@@ -25,7 +27,7 @@ const {
 ))}
 </aside>
 <footer>
-<a class="link" href={`/projects/${link}`}>Go to {item}<Icon name="external-link"/></a>
+<a class="link" href={`${slug}${link}`}>Go to {item}<Icon name="external-link"/></a>
 {icon && <Icon name={icon}/>}
 </footer>
 </section>
@@ -45,8 +47,8 @@ article {
 }
 section {
   box-sizing: border-box;
-  height: 50%;
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;

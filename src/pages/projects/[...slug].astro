@@ -1,6 +1,8 @@
 ---
 import Main from '../../layouts/Main.astro'
+import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
+import '../../styles/projects.css'
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects')
@@ -13,5 +15,8 @@ const { p } = Astro.props;
 const { Content } = await p.render()
 ---
 <Main>
+<h1>{p.data.title}</h1>
+<h2>{p.data.description}</h2>
+<Image class="header" src={p.data.header} alt={p.data.headerAlt}/>
 <Content />
 </Main>
