@@ -32,4 +32,18 @@ li img {
 
 h2 {
   font-size: 1rem;
+  margin: 2rem 0rem;
+}
+
+pre {
+  border-radius: 0.8rem;
+  padding: 1rem;
+}
+
+.header {
+  border-radius: 0.8rem;
+  width: 100%;
+  height: 24rem;
+  object-fit: cover;
+  object-position: top;
 }

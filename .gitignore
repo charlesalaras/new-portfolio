@@ -22,3 +22,4 @@ pnpm-debug.log*
 
 # Assets
 *.woff2
+_*.mdx

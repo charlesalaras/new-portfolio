@@ -1,5 +1,6 @@
 ---
 import Main from '../../layouts/Main.astro'
+import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
 import '../../styles/blog.css'
 
@@ -15,5 +16,8 @@ const { Content } = await entry.render();
 
 ---
 <Main>
+<h1>{entry.data.title}</h1>
+<h2>{entry.data.byline}</h2>
+<Image class="header" src={entry.data.header} alt={entry.data.headerAlt}/>
 <Content />
 </Main>
