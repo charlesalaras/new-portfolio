@@ -7,13 +7,17 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "sprite": "svg-sprite -s --symbol-dest src/styles --symbol-sprite skills.svg icons/*.svg"
   },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
-    "@astrojs/mdx": "^2.1.1",
-    "astro": "^4.4.0",
+    "@astrojs/mdx": "^2.2.1",
+    "astro": "^4.5.8",
     "remark-toc": "^9.0.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.3"
+  },
+  "devDependencies": {
+    "svg-sprite": "^2.0.3"
   }
 }
