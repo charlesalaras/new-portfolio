@@ -33,6 +33,7 @@
 }
 
 html {
+  line-height: 1.25;
   display: flex;
   justify-content: center;
   background: var(--background);
