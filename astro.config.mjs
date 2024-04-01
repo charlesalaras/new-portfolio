@@ -13,4 +13,5 @@ export default defineConfig({
       wrap: true
     }
   },
+  site: 'https://alaras.tech',
 });

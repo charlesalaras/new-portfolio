@@ -1,0 +1,13 @@
+{
+  "position": "XCITE Media Developer Assistant",
+  "company": "University of California, Riverside",
+  "startDate": "2021-05-01",
+  "endDate": "2024-01-01",
+  "notes": [
+  "Collaborated on a feedback application for a California Learning Lab grant that aggregates student performance on learning modules and visualizes analyses based on learning objectives from over 2,000 student records using the Dash application framework, Flask, pandas, and SQLite3",
+  "Refactored and deployed feedback application for California Learning Lab grant into a learning tool for professors and students to view learning module and objective performance, complete assignments, and practice exercises using Express.js, React, MongoDB, and Google Cloud Platform",
+  "Led deployment efforts for California Learning Lab application to service three college campuses across Southern California using Google Cloud Platform",
+  "Developed and tested online interactive learning modules for over 100+ students in STEM courses across three universities using Articulate Storyline and JavaScript",
+  "Assisted professors in the successful creation and deployment of online learning media including learning modules, video graphics, and course instances for 10+ courses using Canvas LMS, YuJa, Premiere Pro, and After Effects"
+  ]
+}
