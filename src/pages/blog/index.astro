@@ -11,6 +11,9 @@ const allBlogPosts = await getCollection('blog')
 
 <Main>
 <h1>Blog Posts</h1>
+{allBlogPosts.length === 0 ?
+<section class="centered"><span>No posts found.</span></section>
+:
 <ul id="posts">
 {allBlogPosts
     .sort(function(a, b){ return b.data.date - a.data.date })
@@ -26,4 +29,5 @@ const allBlogPosts = await getCollection('blog')
         </Card></li>
     ))}
 </ul>
+}
 </Main>

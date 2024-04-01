@@ -134,7 +134,7 @@ table {
   padding-left: 0;
 }
 
-details ul {
+#education details ul, #experience details ul {
   list-style: square !important;
   padding-left: 2rem !important;
 }
