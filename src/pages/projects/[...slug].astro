@@ -17,6 +17,8 @@ const { Content } = await p.render()
 <Main>
 <h1>{p.data.title}</h1>
 <h2>{p.data.description}</h2>
+{(p.data.header && p.data.headerAlt) &&
 <Image class="header" src={p.data.header} alt={p.data.headerAlt}/>
+}
 <Content />
 </Main>

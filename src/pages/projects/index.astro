@@ -13,7 +13,7 @@ const allProjects = await getCollection('projects')
 <h1>Projects</h1>
 <ul>
 {allProjects
-  .sort(function(a, b){ return b.data.date - a.data.date })
+  .sort(function(a, b){ return b.data.date.getTime() - a.data.date.getTime() })
   .map(p => (
     <li><Card
       title={p.data.title}
@@ -24,7 +24,10 @@ const allProjects = await getCollection('projects')
       link={p.slug}
       item="project"
     >
-    {p.data.header && <Image src={p.data.header} alt={p.data.headerAlt}/>}
+    {(p.data.header && p.data.headerAlt) ? 
+    <Image src={p.data.header} alt={p.data.headerAlt}/> :
+    <div/>
+    }
     </Card></li>
 ))}
 </ul>

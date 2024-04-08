@@ -2,7 +2,6 @@
 import Main from '../layouts/Main.astro'
 import Icon from '../components/Icon.astro'
 import Project from '../components/Project.astro'
-import Skill from '../components/Skill.astro'
 import { Image } from 'astro:assets'
 import portrait from '../assets/portrait.png'
 import '../styles/main.css'
@@ -33,7 +32,7 @@ I am a programmer, engineer, video editor, event producer, writer, and graphic d
 <h2>projects</h2>
 <ul role="list">
 {projects
-  .sort(function(a, b){ return b.data.date - a.data.date })
+  .sort(function(a, b){ return b.data.date.getTime() - a.data.date.getTime() })
   .slice(0, 5)
   .map(p => (
     <li><Project
@@ -80,7 +79,7 @@ See more projects<Icon name="external-link" />
   <summary>
   <strong>{j.data.position}</strong> - {j.data.company}
   </summary>
-  {j.data.startDate.toLocaleString('default', {month: 'long', year: 'numeric'})} - {j.data.endDate.toLocaleString('default', {month: 'long', year: 'numeric'})}
+  {j.data.startDate.toLocaleString('default', {month: 'long', year: 'numeric'})} - {j.data.endDate ? j.data.endDate.toLocaleString('default', {month: 'long', year: 'numeric'}) : "Present"}
   <ul>
   {j.data.notes.map(i => (
     <li>{i}</li>

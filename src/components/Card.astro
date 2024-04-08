@@ -22,7 +22,7 @@ const slug = item === "post" ? "/blog/" : "/projects/"
 <h2>{date.getDate()}-{date.getMonth() + 1}-{date.getFullYear()}</h2>
 <p>{byline}</p>
 <aside>
-{tags.map(t => (
+{tags.map((t: string) => (
   <Tag content={t}/>
 ))}
 </aside>

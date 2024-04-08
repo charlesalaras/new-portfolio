@@ -16,8 +16,10 @@ const allBlogPosts = await getCollection('blog')
 :
 <ul id="posts">
 {allBlogPosts
-    .sort(function(a, b){ return b.data.date - a.data.date })
-    .map(p => (
+    .sort(function(a: any, b: any) { 
+        return b.data.date.getTime() - a.data.date.getTime() 
+    })
+    .map((p: any) => (
         <li><Card
           title={p.data.title}
           date={p.data.publishDate}

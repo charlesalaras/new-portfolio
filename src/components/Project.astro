@@ -25,7 +25,7 @@ const {
 </summary>
 <p>{bio}</p>
 <ul>
-{tags.map(t => (
+{tags.map((t: string) => (
 <li><Tag content={t}/></li>
 ))}
 </ul>
