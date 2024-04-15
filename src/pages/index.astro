@@ -54,6 +54,7 @@ See more projects<Icon name="external-link" />
 <table>
 {skills
   .sort(function(a, b){ return b.data.percent - a.data.percent })
+  .slice(0, 5)
   .map(s => (
     <tr>
     <td class="skill"><Icon className="skill-icon" fill=true name={s.data.icon} file="skills.svg"/><strong>{s.data.name}</strong></td>
@@ -74,7 +75,9 @@ See more projects<Icon name="external-link" />
 <section id="experience">
 <h2>experience</h2>
 <ul role="list">
-{jobs.map(j => (
+{jobs
+  .sort(function(a, b){ return b.data.startDate.getTime() - a.data.startDate.getTime() })
+  .map(j => (
   <li><details>
   <summary>
   <strong>{j.data.position}</strong> - {j.data.company}
@@ -92,7 +95,9 @@ See more projects<Icon name="external-link" />
 <section id="education">
 <h2>education</h2>
 <ul role="list">
-{education.map(s => (
+{education
+  .sort(function(a, b){ return b.data.startDate.getTime() - a.data.startDate.getTime() })
+  .map(s => (
   <li><details>
   <summary>
   <strong>{s.data.degree}</strong> - {s.data.school}
