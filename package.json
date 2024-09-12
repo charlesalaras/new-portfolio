@@ -12,14 +12,14 @@
     "sprite": "svg-sprite -s --symbol-dest src/styles --symbol-sprite skills.svg icons/*.svg"
   },
   "dependencies": {
-    "@astrojs/check": "^0.4.1",
-    "@astrojs/mdx": "^2.2.1",
-    "astro": "^4.5.8",
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/mdx": "^3.1.5",
+    "astro": "^4.15.4",
     "remark-toc": "^9.0.0",
-    "sharp": "^0.33.3",
-    "typescript": "^5.4.3"
+    "sharp": "^0.33.5",
+    "typescript": "^5.6.2"
   },
   "devDependencies": {
-    "svg-sprite": "^2.0.3"
+    "svg-sprite": "^2.0.4"
   }
 }
